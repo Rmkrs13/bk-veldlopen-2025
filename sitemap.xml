@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Index page -->
+    <url>
+        <loc>http://crosshulshout.be/index.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- NL pages -->
+    <url>
+        <loc>http://crosshulshout.be/nl.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/nl/live.html</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/nl/partners.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/nl/pers.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/nl/vip.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    
+
+    <!-- FR pages -->
+    <url>
+        <loc>http://crosshulshout.be/fr.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/fr/live.html</loc>
+        <changefreq>always</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/fr/partners.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/fr/presse.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/fr/vip.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- DE pages -->
+    <url>
+        <loc>http://crosshulshout.be/de.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/de/live.html</loc>
+        <changefreq>always</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/de/partners.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/de/presse.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://crosshulshout.be/de/vip.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- 404 page (Since it redirects to index, it's optional to list, but you can if you wish) -->
+    <url>
+        <loc>http://crosshulshout.be/404.html</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+</urlset>

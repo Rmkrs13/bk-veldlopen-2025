@@ -1,0 +1,958 @@
+/* * { border: 1px solid black; } */
+
+@font-face {
+    font-family: 'intro_rustbase';
+    src: url('../fonds/introrust-base-webfont.woff2') format('woff2'),
+         url('../fonds/introrust-base-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'made_evolve_sanslight';
+    src: url('../fonds/made_evolve_sans_light_personal_use-webfont.woff2') format('woff2'),
+         url('../fonds/made_evolve_sans_light_personal_use-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'made_evolve_sansbold';
+    src: url('../fonds/made_evolve_sans_bold_personal_use-webfont.woff2') format('woff2'),
+         url('../fonds/made_evolve_sans_bold_personal_use-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'mullerbold';
+    src: url('../fonds/muller_bold-webfont.woff2') format('woff2'),
+         url('../fonds/muller_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+    font-family: 'made_evolve_sanslight';
+    padding-bottom: 50px;
+    background-color: #f0f0f0;
+    color: #060606;
+}
+
+a {
+    color: #060606;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #060606;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, p {
+    word-break: break-word;
+
+}
+
+h1 {
+    font-family: 'intro_rustbase';
+    font-size: 40px;
+    color: #4e0c69;
+    margin-bottom: 0px;
+    margin-top: 0;
+
+}
+
+h2 {
+    font-family: 'mullerbold';
+
+}
+
+h3 {
+    font-family: 'intro_rustbase';
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+h6 {
+    margin: 0;
+    font-weight: 800;
+    background-color: #e2dd29;
+    border-radius: 8px;
+    padding: 4px;
+    border: 1px solid #060606;
+    font-size: 1em;
+}
+
+h7 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 1em;
+    text-decoration: underline;
+}
+
+h5 {
+    font-weight: 800;
+    margin: 0;
+}
+
+figure {
+    margin: 0;
+}
+
+section {
+    padding-top: 80px;
+}
+
+.primary-btn {
+    background-color: #eeddf4;
+    color: #4e0c69;
+    text-transform: uppercase;
+    padding: 0.8em;
+    text-decoration: none;
+    font-family: 'intro_rustbase';
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 1em;
+    margin-right: 4px;
+    border: 1px solid #4e0c69;
+    text-decoration: none;
+}
+
+.primary-btn:hover {
+    background-color: #4e0c69;
+    color: #eeddf4;
+
+}
+
+.secondary-btn {
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: #060606;
+    font-weight: bold;
+}
+
+.secondary-btn:hover {
+    text-decoration: none;
+}
+
+.three-btn {
+    background-color: #060606;
+    color: #f0f0f0;
+    text-transform: uppercase;
+    padding: 0.8em;
+    text-decoration: none;
+    font-family: 'mullerbold';
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 1em;
+    margin-right: 4px;
+    border: 1px solid #060606;
+    text-decoration: none;
+    width: 100%;
+}
+
+.three-btn:hover {
+    background-color: #f0f0f0;
+    color: #060606;
+
+}
+
+.four-btn {
+    background-color: #f0f0f0;
+    color: #060606;
+    text-transform: uppercase;
+    padding: 0.8em;
+    text-decoration: none;
+    font-family: 'mullerbold';
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 1em;
+    margin-right: 4px;
+    border: 1px solid #060606;
+    text-decoration: none;
+}
+
+.four-btn:hover {
+    background-color: #060606;
+    color: #f0f0f0;
+
+}
+
+.five-btn {
+    background-color: #060606;
+    color: #f0f0f0;
+    text-transform: uppercase;
+    padding: 0.8em;
+    text-decoration: none;
+    font-family: 'mullerbold';
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 1em;
+    margin-right: 4px;
+    border: 1px solid #060606;
+    text-decoration: none;
+}
+
+.five-btn:hover {
+    background-color: #f0f0f0;
+    color: #060606;
+
+}
+
+.main-content {
+    background-color: #f0f0f0;
+    margin: 16px;
+}
+
+/*! css voor header */
+
+.language-bar {
+    background-color: #4e0c69;
+    width: 100%;
+    height: 25px; /* adjust as needed for the 'not too high' requirement */
+    padding: 2px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+.language-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.language-links div {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.language-links a {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.language-links a:hover {
+    text-decoration: underline;
+}
+
+.logo {
+    padding: 1em 0.5em;
+    display: inline-block;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+#desktop-c2A,
+#desktop-aanbod {
+    display: none;
+
+}
+
+label {
+    cursor:pointer;
+}
+
+
+.logo img {
+    height: 29px;
+}
+
+.navbar {
+    background-color: #f0f0f0;
+    position: fixed;
+    width: 100%;
+    top: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #4e0c69;
+
+}
+
+nav {
+    display: none;
+}
+
+nav img {
+    height: 28px;
+    width: auto;
+}
+
+nav a {
+    display: block;
+    padding: 1em 0.75em;
+    font-size: 1em;
+    color: #060606;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#ticketsmobile {
+    display: none;
+}
+
+a .logo {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.links a:hover {
+    color: #4e0c69;
+    font-weight: 1800;
+    font-size: 0.9em;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 90px;
+    padding: 24px;
+    padding-bottom: 16px;
+    /* gap: 16px; */
+    background-color: #4e0c69;
+}
+
+.info .text {
+    text-align: center;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#crosscup-desktop, .desktop-sponsors {
+    display: none;
+}
+
+#mobile-crosscup {
+    background-color: #4e0C69;
+    border: none;
+    border-radius: 0;
+}
+
+#mobile-crosscup img {
+    background: none;
+    border-radius: 0;
+    width: 70%;
+}
+
+.info img {
+    width: 100%;
+    height: auto;
+}
+
+.info a {
+    margin-right: 32px;
+}
+
+.info .text img, .bondsponsors-mobile img {
+    background-color: #f0f0f0;
+    padding: 16px;
+    border: 1px solid #060606;
+    border-radius: 1em;
+}
+
+.info .titlebar {
+    border: 1px solid #060606;
+    border-radius: 1em;
+    padding: 8px;
+    background-color: #f0f0f0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info .titlebar img {
+    border: none;
+    width: 40%;
+}
+
+#crosscup-mobile img {
+    width: 50%;
+}
+
+.info .primary-btn {
+    border-radius: 1em;
+}
+
+.countdown {
+    margin: 16px 0px;
+    font-size: 1.4em;
+}
+
+ol {
+    padding: 0;
+}
+
+.intro {
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+}
+
+.intro figure {
+    padding-top: 80px;
+}
+
+#figure1 {
+    padding-top: 0;
+}
+
+#participate div {
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+}
+
+
+#participate a {
+    display: flex;
+    width: auto;
+    max-width: 530px;
+}
+
+#timetable, #course {
+    display: flex;
+    flex-direction: column;
+}
+
+#results figure {
+    margin: 0;
+}
+#results figure span{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+}
+
+#timetable, #timetable figure {
+    width: 100%;
+
+}
+
+#timetable figure div {
+    height: 100%;   /* This ensures that the div takes the full height of its parent. */
+    overflow-x:auto;
+}
+
+#timetable table {
+    margin: 8px;
+}
+
+#timetable table, #timetable tr, #timetable td, #timetable th {
+    border: 0.5px solid #060606;
+    border-spacing: 0px;
+}
+
+#timetable td {
+    padding: 4px;
+}
+
+
+.td-center {
+    text-align: center;
+}
+
+.tr-main {
+    background-color: #7b5c89;
+    font-family: 'Mullerbold';
+    color: #d9d9d9;
+
+}
+
+.table-top {
+    color: #f0f0f0;
+    background-color: #060606;
+
+}
+
+.table-title {
+    color: #f0f0f0;
+    background-color: #39a935;
+    font-family: 'Intro_rustbase';
+    padding: 16px;
+    text-transform: uppercase;
+}
+
+#table-bk {
+    background-color: #4e0C69;
+}
+
+.table-subtitle {
+    color: #060606;
+    background-color: #eeddf4;
+    font-family: 'Mullerbold';
+}
+
+.th-main {
+    background-color: #e2dd29;
+}
+
+#course figure div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    margin: 0;
+}
+
+#course span {
+    padding: 0;
+    margin: 0;
+flex-wrap: wrap;
+}
+
+#course figure img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #060606;
+    border-radius: 1em;
+}
+
+#map {
+    width: 100%;
+    text-align: center;
+}
+
+/*! css voor slider */
+
+.slider {
+    width: 25%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    margin: 16px;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%; /* Initially, all images are placed to the right */
+    transition: left 0.5s;
+    object-fit: cover; /* To ensure the image scales and fits within the slider */
+}
+
+.slider img {
+    width: 100%;
+    height: auto;
+}
+
+.slide.active {
+    left: 0; /* The active image is shown */
+}
+
+.sponsors-footer {
+    margin-top: 40px;
+    text-align: center;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.sponsors-footer img {
+    width: 90%;
+    max-width: 860px;
+    border: 1px solid #060606;
+    border-radius: 1em;
+    padding: 16px;
+
+}
+
+#sponsors li {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+#main-sponsors {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#main-sponsors table {
+    width: 100%;
+    max-width: 600px;
+    border: none;
+}
+
+#main-sponsors table td {
+    padding: 16px;
+
+}
+
+.press-form {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#registrationForm fieldset {
+    border: 1px solid #060606;
+    border-radius: 1em;
+    padding: 16px;
+}
+
+#registrationForm input, #registrationForm textarea {
+    border: 1px solid #060606;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.formFlex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+#registrationForm textarea {
+    width: 100%;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}
+
+/*! css voor footer */
+
+.contact {
+    background-color: #4e0c69;
+    color: #f0f0f0;
+
+}
+
+.contact {
+    margin: 0;
+    padding: 5px 16px;
+
+}
+
+.contact p {
+    margin-left: 10px;
+}
+
+.contact a {
+    color: #f0f0f0;
+    text-decoration: underline;
+}
+
+.contact a:hover {
+    text-decoration: none;
+}
+
+#adresgegevens {
+    margin-left: 10px;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: left;
+
+}
+
+#adresgegevens th {
+    padding-bottom: 12px;
+}
+
+.route {
+    padding-top: 8px;
+}
+
+.socials {
+    text-align: right;
+}
+
+.singed {
+    text-align: right;
+    padding-bottom: 6em;
+    font-size: 11px;
+
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#mobile-menu {
+    display: none;
+}
+
+#mobile-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    /* margin-bottom: 8px; */
+    padding: 8px;
+    background-color: #39a935;
+    /* border: 1px solid #060606; */
+    font-size: 30px;
+
+}
+
+#mobile-nav a {
+    text-decoration: none;
+}
+
+.color-block {
+    display: flex;
+    width: 100%;
+    height: 6px;
+}
+
+.color {
+    flex: 1; /* This ensures each color section takes up an equal amount of space */
+    height: 100%;
+}
+
+.clubsponsors {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+    padding: 8px;
+    background-color: #f0f0f0;
+
+}
+
+.clubsponsors img {
+    height: 28px;
+    width: auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+@media screen and (min-width:425px) {
+
+    #ticketsmobile {
+        display: inline;
+    }
+
+    .logo img {
+        height: 32px;
+    }
+
+    h1 {
+        font-size: 44px;
+    }
+}
+
+@media screen and (min-width:800px) {
+
+    .info {
+        flex-direction: row;
+    }
+
+    .text {
+        order: 2;
+    }
+
+    #crosscup-mobile {
+        display: none;
+    }
+
+    .desktop-sponsors {
+        display: inline;
+    }
+
+
+    body {
+        padding-bottom: 0;
+    }
+
+    .info {
+        align-items: flex-start;
+        height: 100vh; /* Set the height to 100% of the viewport */
+    }
+
+    .info .text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .text img {
+        display: inline;
+    }
+
+    #hero {
+        width: 55%;
+        height: auto;
+    }
+
+    .intro {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    #participate div {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #timetable, #course {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #timetable table {
+        margin: auto;
+    }
+
+    #course figure a {
+        width: 50%;
+        height: auto;
+    }
+
+    #course figure div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    #adresgegevens {
+        width: 500px;
+    }
+
+    .formFlex {
+        flex-direction: row;
+        align-items: center;
+
+    }
+
+    .bondsponsors-mobile {
+        display: none;
+    }
+
+    .intro figure {
+        padding-top: 0px;
+    }
+
+    .clubsponsors img {
+        height: 48px;
+        width: auto;
+    }
+
+    #crosscup-desktop  {
+        display: inline;
+    }
+
+    #mobile-crosscup {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width:1016px) {
+
+    h1 {
+        font-size: 3.5em;
+    }
+
+    h3 {
+        font-size: 1.5em;
+    }
+
+    .navbar nav a,
+    #desktop-c2A,
+    #desktop-aanbod {
+        display: inline-block;
+        margin-top: 10px;
+        margin-right: 10px;
+        padding: 1em;
+        padding-bottom: 16px;
+    }
+
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        text-align: right;
+        align-content: center;
+        align-items: flex-start;
+    }
+
+    .navbar {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    #hero {
+        width: 55%;
+        height: auto;
+    }
+
+    #ticketsmobile {
+        display: none;
+    }
+
+    #mobile-nav {
+        display: none;
+    }
+}
+
+@media screen and (min-width:1440px) {
+
+    h1 {
+        font-size: 4em;
+    }
+
+    .navbar {
+        justify-content: space-around;
+    }
+
+    .language-bar {
+        display: flex;
+        justify-content: center;
+    }
+
+    .language-links {
+        width: 1240px;
+    }
+
+    .main-content {
+        max-width: 1440px;
+        margin-top: 7em;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .info {
+        margin-top: 90px;
+        padding-left: 160px;
+        padding-right: 160px;
+    }
+
+    .contact {
+        max-width: 1440px;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Standard Meta Tags -->
+    <title>BK/CB Cross Hulshout 2024</title>
+    <meta name="description" content="17.11.2024">
+    <meta name="author" content="A.C. Hulshout">
+    <link rel=”alternate” hreflang="nl" href="https://crosshulshout.be/nl" />
+    <link rel=”alternate” hreflang="fr" href="https://crosshulshout.be/fr" />
+    <link rel=”alternate” hreflang="de" href="https://crosshulshout.be/de" />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="BK/CB Cross 2024 Hulshout">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://crosshulshout.be/banner.png">
+    <meta property="og:description" content="17.11.2024">
+    <meta property="og:url" content="https://crosshulshout.be">
+    <meta property="og:site_name" content="BK/CB Cross Hulshout 2024">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./icons/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#f0f0f0">
+    <meta name="theme-color" content="#4e0c69">
+    
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WPCJ8268');</script>
+      <!-- End Google Tag Manager -->
+    
+    <script>
+        function redirectBasedOnLanguage() {
+            // Get browser's language
+            let lang = navigator.language || navigator.userLanguage;
+            lang = lang.substr(0, 2).toLowerCase();
+
+            // Redirect based on the detected language
+            switch (lang) {
+                case 'nl':
+                    window.location.href = './nl';
+                    break;
+                case 'fr':
+                    window.location.href = './fr';
+                    break;
+                case 'de':
+                    window.location.href = './de';
+                    break;
+                default:
+                    window.location.href = './nl';
+                    break;
+            }
+        }
+    </script>
+</head>
+<body onload="redirectBasedOnLanguage()">
+    <noscript>
+        <p>JavaScript lijkt uitgeschakeld te zijn. Kies uw taal:</p>
+        <p>JavaScript semble être désactivé. Veuillez choisir votre langue :</p>
+        <ul>
+            <li><a href="./nl">Nederlands</a></li>
+            <li><a href="./fr">Français</a></li>
+            <li><a href="./de">Deutsch</a></li>
+        </ul>
+    </noscript>
+</body>
+</html>
