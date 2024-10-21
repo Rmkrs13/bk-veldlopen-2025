@@ -353,6 +353,12 @@ a .logo {
     height: auto;
 }
 
+#hero img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain
+}
+
 .info a {
     margin-right: 32px;
 }
