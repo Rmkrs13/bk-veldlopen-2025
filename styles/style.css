@@ -356,7 +356,7 @@ a .logo {
 #hero img {
     max-width: 100%;
     height: auto;
-    object-fit: contain
+    object-fit: cover
 }
 
 .info a {
@@ -905,11 +905,6 @@ footer {
     .navbar {
         display: flex;
         align-items: flex-start;
-    }
-
-    #hero {
-        width: 55%;
-        height: auto;
     }
 
     #ticketsmobile {
