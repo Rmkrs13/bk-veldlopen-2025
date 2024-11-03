@@ -40,7 +40,6 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
             padding: 20px;
             box-sizing: border-box;
         }
@@ -51,7 +50,7 @@
             align-items: center;
             gap: 15px;
             width: 300px;
-            max-width: 75%;
+            max-width: 70%;
         }
 
         .header, .footer {
@@ -169,6 +168,14 @@
             text-decoration: none;
         }
 
+        #vipWarning {
+            display: none;
+            font-size: 14px;
+            color: #d9534f;
+            text-align: center;
+            margin-top: 10px;
+        }
+
         /* Media query for smaller screens */
         @media (max-width: 600px) {
             h1 {
@@ -185,6 +192,12 @@
             .ticket, .placeholder {
             padding: 4px;
             border-radius: 10px;
+        }
+
+        .header img {
+            max-width: 65px;
+            height: auto;
+            object-fit: contain;
         }
 
         body {
@@ -227,6 +240,12 @@
                 <p><span id="ticketId"></span></p>
             </div>
             <button id="shareButton" onclick="shareTicket()">Share Ticket</button>
+            <div id="vipWarning">
+                <p>Enkel bruikbaar indien aanwezigheid is bevestigd:</p>
+                <a href="https://crosshulshout.be/vip" target="_blank">CROSSHULSHOUT.BE/VIP</a>
+                <br>
+                <br>
+            </div>
         </div>
 
         <!-- Placeholder for 404-style message -->
@@ -258,9 +277,7 @@
         }
     
         function getUrlData() {
-            // Get the hash part of the URL (without the # symbol)
             const hash = window.location.hash.slice(1);
-            // Directly decode the hash content
             return base64Decode(hash);
         }
     
@@ -324,6 +341,13 @@
                 });
     
                 document.getElementById('ticketProgress').textContent = `${index + 1}/${ids.length}`;
+
+                const vipWarning = document.getElementById("vipWarning");
+                if (ticketId && ticketId.includes("vip-BC24")) {
+                    vipWarning.style.display = "block";
+                } else {
+                    vipWarning.style.display = "none";
+                }
             }
     
             function nextTicket() {
@@ -368,7 +392,6 @@
             const { ids, names } = data;
             const currentData = { ids: [ids[currentTicket]], names: [names[currentTicket]] };
             const encodedData = base64Encode(currentData);
-            // Use only the hash (without "data=")
             const shareUrl = `${window.location.origin}${window.location.pathname}#${encodedData}`;
             const ticketName = names[currentTicket] || "Tickets - BK/CB Cross 2024";
     
@@ -393,7 +416,5 @@
             }
         }
     </script>
-    
-    
 </body>
 </html>
