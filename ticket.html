@@ -242,7 +242,7 @@
             <button id="shareButton" onclick="shareTicket()">Share Ticket</button>
             <div id="vipWarning">
                 <p>Enkel bruikbaar indien aanwezigheid is bevestigd:</p>
-                <a href="https://crosshulshout.be/vip" target="_blank">CROSSHULSHOUT.BE/VIP</a>
+                <a id="vipLink" href="#" target="_blank">CROSSHULSHOUT.BE/VIP</a>
                 <br>
                 <br>
             </div>
@@ -323,32 +323,37 @@
             document.getElementById("placeholder").style.display = "block";
         } else {
             const { ids, names } = data;
-    
-            function showTicket(index) {
-                const ticketId = ids[index];
-                const ticketName = names[index];
-    
-                document.getElementById('ticketName').textContent = ticketName || 'N/A';
-                document.getElementById('ticketId').textContent = ticketId || 'N/A';
-    
-                const qrCodeElement = document.getElementById("qrCode");
-                qrCodeElement.innerHTML = '';
-                new QRCode(qrCodeElement, {
-                    text: ticketId || '',
-                    width: 128,
-                    height: 128,
-                    correctLevel: QRCode.CorrectLevel.H
-                });
-    
-                document.getElementById('ticketProgress').textContent = `${index + 1}/${ids.length}`;
 
-                const vipWarning = document.getElementById("vipWarning");
-                if (ticketId && ticketId.includes("vip-BC24")) {
-                    vipWarning.style.display = "block";
-                } else {
-                    vipWarning.style.display = "none";
-                }
+                    function showTicket(index) {
+            const ticketId = ids[index];
+            const ticketName = names[index];
+
+            document.getElementById('ticketName').textContent = ticketName || 'N/A';
+            document.getElementById('ticketId').textContent = ticketId || 'N/A';
+
+            const qrCodeElement = document.getElementById("qrCode");
+            qrCodeElement.innerHTML = '';
+            new QRCode(qrCodeElement, {
+                text: ticketId || '',
+                width: 128,
+                height: 128,
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            document.getElementById('ticketProgress').textContent = `${index + 1}/${ids.length}`;
+
+            const vipWarning = document.getElementById("vipWarning");
+            if (ticketId && ticketId.includes("vip-BC24")) {
+                vipWarning.style.display = "block";
+
+                // Set the VIP link dynamically
+                const vipLink = document.getElementById("vipLink");
+                vipLink.href = `https://tickets.crosshulshout.be/vip.php?id=${ticketId}`;
+            } else {
+                vipWarning.style.display = "none";
             }
+        }
+
     
             function nextTicket() {
                 animateTicketTransition(() => {
@@ -398,7 +403,7 @@
             if (navigator.share) {
                 navigator.share({
                     title: ticketName,
-                    text: 'Tickets - BK/CB Cross 2024 -' + ticketName,
+                    text: 'Tickets - BK/CB Cross 2024 - ' + ticketName,
                     url: shareUrl
                 })
                 .then(() => {
@@ -415,6 +420,7 @@
                 });
             }
         }
+
     </script>
 </body>
 </html>
