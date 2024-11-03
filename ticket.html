@@ -383,14 +383,12 @@
                 })
                 .catch(err => {
                     console.error('Error sharing the ticket:', err);
-                    alert('Sharing failed. Please try again.');
                 });
             } else {
                 navigator.clipboard.writeText(shareUrl).then(() => {
                     alert('Ticket link copied to clipboard');
                 }).catch(err => {
                     console.error('Failed to copy link:', err);
-                    alert('Copying link failed. Please try again.');
                 });
             }
         }
