@@ -1,0 +1,196 @@
+/* * { border: 1px solid black; } */
+
+@font-face {
+    font-family: 'intro_rustbase';
+    src: url('../fonds/introrust-base-webfont.woff2') format('woff2'),
+         url('../fonds/introrust-base-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'made_evolve_sanslight';
+    src: url('../fonds/made_evolve_sans_light_personal_use-webfont.woff2') format('woff2'),
+         url('../fonds/made_evolve_sans_light_personal_use-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'made_evolve_sansbold';
+    src: url('../fonds/made_evolve_sans_bold_personal_use-webfont.woff2') format('woff2'),
+         url('../fonds/made_evolve_sans_bold_personal_use-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'mullerbold';
+    src: url('../fonds/muller_bold-webfont.woff2') format('woff2'),
+         url('../fonds/muller_bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body {
+    font-family: 'made_evolve_sanslight';
+    color: #060606;
+}
+
+a {
+    color: #060606;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #060606;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, p {
+    word-break: break-word;
+
+}
+
+h1 {
+    font-family: 'intro_rustbase';
+    font-size: 40px;
+    color: #4e0c69;
+    margin-bottom: 0px;
+    margin-top: 0;
+
+}
+
+h2 {
+    font-family: 'mullerbold';
+
+}
+
+h3 {
+    font-family: 'intro_rustbase';
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 1.2em;
+}
+
+h6 {
+    margin: 0;
+    font-weight: 800;
+    background-color: #e2dd29;
+    border-radius: 8px;
+    padding: 4px;
+    border: 1px solid #060606;
+    font-size: 1em;
+}
+
+h7 {
+    margin: 0;
+    font-weight: 800;
+    font-size: 1em;
+    text-decoration: underline;
+}
+
+h5 {
+    font-weight: 800;
+    margin: 0;
+}
+
+.primary-btn {
+    background-color: #eeddf4;
+    color: #4e0c69;
+    text-transform: uppercase;
+    padding: 0.8em;
+    text-decoration: none;
+    font-family: 'intro_rustbase';
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 1em;
+    margin-right: 4px;
+    border: 1px solid #4e0c69;
+    text-decoration: none;
+}
+
+.primary-btn:hover {
+    background-color: #4e0c69;
+    color: #eeddf4;
+
+}
+
+.secondary-btn {
+    text-transform: uppercase;
+    text-decoration: underline;
+    color: #060606;
+    font-weight: bold;
+}
+
+.secondary-btn:hover {
+    text-decoration: none;
+}
+
+.three-btn {
+    background-color: #060606;
+    color: #f0f0f0;
+    text-transform: uppercase;
+    padding: 0.8em;
+    text-decoration: none;
+    font-family: 'mullerbold';
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 1em;
+    margin-right: 4px;
+    border: 1px solid #060606;
+    text-decoration: none;
+    width: 100%;
+}
+
+.three-btn:hover {
+    background-color: #f0f0f0;
+    color: #060606;
+
+}
+
+.four-btn {
+    background-color: #f0f0f0;
+    color: #060606;
+    text-transform: uppercase;
+    padding: 0.8em;
+    text-decoration: none;
+    font-family: 'mullerbold';
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 1em;
+    margin-right: 4px;
+    border: 1px solid #060606;
+    text-decoration: none;
+}
+
+.four-btn:hover {
+    background-color: #060606;
+    color: #f0f0f0;
+
+}
+
+.five-btn {
+    background-color: #060606;
+    color: #f0f0f0;
+    text-transform: uppercase;
+    padding: 0.8em;
+    text-decoration: none;
+    font-family: 'mullerbold';
+    font-weight: 500;
+    font-size: 1em;
+    border-radius: 1em;
+    margin-right: 4px;
+    border: 1px solid #060606;
+    text-decoration: none;
+}
+
+.five-btn:hover {
+    background-color: #f0f0f0;
+    color: #060606;
+
+}

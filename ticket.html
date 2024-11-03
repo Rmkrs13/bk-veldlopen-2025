@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Standard Meta Tags -->
+    <title>Tickets - BK/CB Cross 2024</title>
+    <meta name="description" content="17 nov 2024">
+    <meta name="author" content="A.C. Hulshout">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Tickets - BK/CB Cross 2024">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://crosshulshout.be/banner.png">
+    <meta property="og:description" content="17 nov 2024">
+    <meta property="og:url" content="https://crosshulshout.be/ticket">
+    <meta property="og:site_name" content="Tickets - BK/CB Cross 2024">
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../icons/favicon-16x16.png">
+    <link rel="manifest" href="../site.webmanifest">
+    <meta name="msapplication-TileColor" content="#f0f0f0">
+    <meta name="theme-color" content="#4e0c69">
+
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="styles/ticketstyle.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #4E0C69;
+            background-size: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 300px;
+            max-width: 75%;
+        }
+
+        .header, .footer {
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header img {
+            max-width: 80px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .footer img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .ticket, .placeholder {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            transition: opacity 0.5s ease;
+        }
+
+        .ticket.fade-out, .placeholder.fade-out {
+            opacity: 0;
+        }
+
+        .ticket.fade-in, .placeholder.fade-in {
+            opacity: 1;
+        }
+
+        .ticket-progress {
+            color: #000000;
+            font-size: 14px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-weight: bold;
+        }
+
+        .qr-code {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ticket-details {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .arrow {
+            position: fixed;
+            top: 50%;
+            font-size: 32px;
+            color: #ffffff;
+            user-select: none;
+            cursor: pointer;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        #prev {
+            left: 20px;
+        }
+
+        #next {
+            right: 20px;
+        }
+
+        .arrow:hover {
+            color: #ccc;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: #ff0000;
+        }
+
+        #shareButton {
+            background-color: #ffffff;
+            border: none;
+            color: #000000;
+            text-decoration: underline;
+        }
+
+        #shareButton:hover {
+            text-decoration: none;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+        }
+            .arrow {
+                font-size: 28px;
+            }
+
+            .qr-code {
+            margin: 0px;
+        }
+
+            .ticket, .placeholder {
+            padding: 4px;
+            border-radius: 10px;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        #shareButton:hover {
+            text-decoration: underline;
+        }
+
+        }
+
+    </style>
+</head>
+<body>
+    <a href="https://crosshulshout.be" class="close-button">&times;</a>
+
+    <!-- Left and Right Arrows -->
+    <span class="arrow" id="prev" onclick="prevTicket()"><</span>
+    <span class="arrow" id="next" onclick="nextTicket()">></span>
+
+    <div class="container">
+        <!-- Header with logos -->
+        <div class="header">
+            <img src="./images/logo.png" alt="achulshout-logo">
+            <img src="./images/crosscup.png" alt="crosscup logo">
+            <img src="./images/logoBA.png" alt="belgianathletics-logo">
+        </div>
+
+        <!-- Main ticket content -->
+        <div class="ticket" id="ticket">
+            <p class="ticket-progress" id="ticketProgress" style="padding-right: 8px; margin-top: 0;">1/1</p>
+            <br>
+            <h1 id="eventTitle">BK Veldlopen</h1>
+            <h3>17 nov 2024</h3>
+            <p><span id="ticketName"></span></p>
+            <div class="ticket-details">
+                <div id="qrCode" class="qr-code"></div>
+                <p><span id="ticketId"></span></p>
+            </div>
+            <button id="shareButton" onclick="shareTicket()">Share Ticket</button>
+        </div>
+
+        <!-- Placeholder for 404-style message -->
+        <div class="placeholder" id="placeholder" style="display: none;">
+            <h1 id="notFoundTitle">Ticket Not Found</h1>
+            <p id="notFoundMessage">The ticket link you used is invalid or empty.</p>
+            <p id="notFoundInstruction">Please check the link or contact support.</p>
+            <a href="mailto:tickets@achulshout.be">tickets@achulshout.be</a>
+        </div>
+
+        <!-- Footer with sponsors -->
+        <div class="footer">
+            <img src="./images/ticketsponsors.svg" alt="Sponsors">
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        function base64Encode(data) {
+            return btoa(JSON.stringify(data));
+        }
+    
+        function base64Decode(encodedData) {
+            try {
+                return JSON.parse(atob(encodedData));
+            } catch (error) {
+                return null;
+            }
+        }
+    
+        function getUrlData() {
+            // Get the hash part of the URL (without the # symbol)
+            const hash = window.location.hash.slice(1);
+            // Directly decode the hash content
+            return base64Decode(hash);
+        }
+    
+        const data = getUrlData();
+        let currentTicket = 0;
+    
+        function setLanguageText() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const titleElement = document.getElementById("eventTitle");
+            const shareButton = document.getElementById("shareButton");
+    
+            if (userLang.startsWith('nl')) {
+                titleElement.textContent = "BK Veldlopen";
+                shareButton.textContent = "ticket delen";
+                document.getElementById("notFoundTitle").textContent = "Ticket niet gevonden";
+                document.getElementById("notFoundMessage").textContent = "De ticketlink die u hebt gebruikt is ongeldig of leeg.";
+                document.getElementById("notFoundInstruction").textContent = "Controleer de link of neem contact op.";
+            } else if (userLang.startsWith('fr')) {
+                titleElement.textContent = "CB Cross";
+                shareButton.textContent = "partager le ticket";
+                document.getElementById("notFoundTitle").textContent = "Billet non trouvé";
+                document.getElementById("notFoundMessage").textContent = "Le lien du billet que vous avez utilisé est invalide ou vide.";
+                document.getElementById("notFoundInstruction").textContent = "Veuillez vérifier le lien ou contacter le support.";
+            } else if (userLang.startsWith('de')) {
+                titleElement.textContent = "BM Feldlaufen";
+                shareButton.textContent = "ticket teilen";
+                document.getElementById("notFoundTitle").textContent = "Ticket nicht gefunden";
+                document.getElementById("notFoundMessage").textContent = "Der verwendete Ticketlink ist ungültig oder leer.";
+                document.getElementById("notFoundInstruction").textContent = "Bitte überprüfen Sie den Link oder wenden Sie sich an den Support.";
+            } else {
+                titleElement.textContent = "BC Cross-Country";
+                shareButton.textContent = "share ticket";
+                document.getElementById("notFoundTitle").textContent = "Ticket Not Found";
+                document.getElementById("notFoundMessage").textContent = "The ticket link you used is invalid or empty.";
+                document.getElementById("notFoundInstruction").textContent = "Please check the link or contact support.";
+            }
+        }
+    
+        setLanguageText();
+    
+        if (!data) {
+            document.getElementById("ticket").style.display = "none";
+            document.getElementById("placeholder").style.display = "block";
+        } else {
+            const { ids, names } = data;
+    
+            function showTicket(index) {
+                const ticketId = ids[index];
+                const ticketName = names[index];
+    
+                document.getElementById('ticketName').textContent = ticketName || 'N/A';
+                document.getElementById('ticketId').textContent = ticketId || 'N/A';
+    
+                const qrCodeElement = document.getElementById("qrCode");
+                qrCodeElement.innerHTML = '';
+                new QRCode(qrCodeElement, {
+                    text: ticketId || '',
+                    width: 128,
+                    height: 128,
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+    
+                document.getElementById('ticketProgress').textContent = `${index + 1}/${ids.length}`;
+            }
+    
+            function nextTicket() {
+                animateTicketTransition(() => {
+                    currentTicket = (currentTicket >= ids.length - 1) ? 0 : currentTicket + 1;
+                    showTicket(currentTicket);
+                });
+            }
+    
+            function prevTicket() {
+                animateTicketTransition(() => {
+                    currentTicket = (currentTicket <= 0) ? ids.length - 1 : currentTicket - 1;
+                    showTicket(currentTicket);
+                });
+            }
+    
+            function animateTicketTransition(callback) {
+                const ticketElement = document.getElementById("ticket");
+                ticketElement.classList.add("fade-out");
+    
+                setTimeout(() => {
+                    callback();
+                    ticketElement.classList.remove("fade-out");
+                    ticketElement.classList.add("fade-in");
+    
+                    setTimeout(() => {
+                        ticketElement.classList.remove("fade-in");
+                    }, 250);
+                }, 250);
+            }
+    
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'ArrowRight') nextTicket();
+                if (event.key === 'ArrowLeft') prevTicket();
+            });
+    
+            showTicket(currentTicket);
+        }
+    
+        function shareTicket() {
+            if (!data) return;
+            const { ids, names } = data;
+            const currentData = { ids: [ids[currentTicket]], names: [names[currentTicket]] };
+            const encodedData = base64Encode(currentData);
+            // Use only the hash (without "data=")
+            const shareUrl = `${window.location.origin}${window.location.pathname}#${encodedData}`;
+            const ticketName = names[currentTicket] || "Tickets - BK/CB Cross 2024";
+    
+            if (navigator.share) {
+                navigator.share({
+                    title: ticketName,
+                    text: 'Tickets - BK/CB Cross 2024 -' + ticketName,
+                    url: shareUrl
+                })
+                .then(() => {
+                    console.log('Ticket shared successfully');
+                })
+                .catch(err => {
+                    console.error('Error sharing the ticket:', err);
+                    alert('Sharing failed. Please try again.');
+                });
+            } else {
+                navigator.clipboard.writeText(shareUrl).then(() => {
+                    alert('Ticket link copied to clipboard');
+                }).catch(err => {
+                    console.error('Failed to copy link:', err);
+                    alert('Copying link failed. Please try again.');
+                });
+            }
+        }
+    </script>
+    
+    
+</body>
+</html>
