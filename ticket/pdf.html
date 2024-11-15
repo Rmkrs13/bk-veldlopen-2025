@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Ticket Viewer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <style>
+        /* Remove all margins and paddings */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        /* Ensure iframe fills the viewport */
+        iframe {
+            display: block;
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const { jsPDF } = window.jspdf;
+
+            // Decode ticket data from hash
+            function decodeHashData() {
+                const hash = window.location.hash.substring(1);
+                try {
+                    const decodedData = atob(hash);
+                    console.log("Decoded data:", decodedData);
+                    return JSON.parse(decodedData);
+                } catch (e) {
+                    console.error("Invalid hash data:", e);
+                    return null;
+                }
+            }
+
+            // Load image for the ticket background
+            function loadImage(src) {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.src = src;
+                    img.onload = () => resolve(img);
+                    img.onerror = () => {
+                        console.error(`Failed to load image at: ${src}`);
+                        reject(new Error(`Image not found: ${src}`));
+                    };
+                });
+            }
+
+            // Determine ticket type based on ID prefix
+            function getTicketType(ticketId) {
+                if (ticketId.startsWith("e-")) return "e-ticket";
+                if (ticketId.startsWith("p-")) return "p-ticket";
+                if (ticketId.startsWith("vip-")) return "vip-ticket";
+                if (ticketId.startsWith("vvip-")) return "vvip-ticket";
+                if (ticketId.startsWith("24AT")) return "a-ticket";
+                return "default-ticket"; // Fallback if no match
+            }
+
+            // Generate the PDF
+            async function generatePDF(ticketData) {
+                const doc = new jsPDF({ unit: "mm", format: "a4" });
+                const qrSize = 18; // QR code size
+                const fontSize = 5; // Font size for ticket ID
+                const nameFontSize = 10; // Larger font size for ticket name
+
+                // Background images for each ticket type
+                const backgrounds = {
+                    "e-ticket": "/ticket/e-ticket.png",
+                    "p-ticket": "/ticket/p-ticket.png",
+                    "vip-ticket": "/ticket/vip-ticket.png",
+                    "vvip-ticket": "/ticket/vvip-ticket.png",
+                    "a-ticket": "/ticket/a-ticket.png",
+                    "default-ticket": "/ticket/default-ticket.png"
+                };
+
+                for (let i = 0; i < ticketData.ids.length; i++) {
+                    const ticketId = ticketData.ids[i];
+                    const ticketName = ticketData.names[i];
+                    const ticketType = getTicketType(ticketId);
+                    const backgroundImgSrc = backgrounds[ticketType];
+
+                    try {
+                        console.log(`Processing ticket ID: ${ticketId}, Name: ${ticketName}, Type: ${ticketType}`);
+                        const img = await loadImage(backgroundImgSrc);
+
+                        // Add background image
+                        doc.addImage(img, "PNG", 55, 10, 100, 70);
+
+                        // Generate QR code
+                        const qr = new QRious({
+                            value: ticketId,
+                            size: qrSize * 10
+                        });
+                        doc.addImage(qr.toDataURL(), "PNG", 128.2, 35, qrSize, qrSize);
+
+                        // Add ticket ID below the QR code
+                        doc.setFontSize(fontSize);
+                        doc.text(ticketId, 137.2, 55, { align: "center" });
+
+                        // Add ticket name and ID at the bottom
+                        doc.setFontSize(nameFontSize);
+                        doc.text(`${ticketName} (${ticketId})`, 105, 85, { align: "center", maxWidth: 100 });
+
+                        // Add a new page if there are more tickets
+                        if (i < ticketData.ids.length - 1) doc.addPage();
+                    } catch (error) {
+                        console.error(`Error generating ticket for ID: ${ticketId}`, error);
+                    }
+                }
+
+                // Open the PDF as a blob in the same page
+                const pdfBlob = doc.output("blob");
+                const pdfURL = URL.createObjectURL(pdfBlob);
+                const iframe = document.createElement("iframe");
+                iframe.src = pdfURL;
+                document.body.innerHTML = ""; // Clear existing content
+                document.body.appendChild(iframe);
+            }
+
+            const ticketData = decodeHashData();
+            if (ticketData && ticketData.ids && ticketData.names && ticketData.ids.length === ticketData.names.length) {
+                await generatePDF(ticketData);
+            } else {
+                console.error("Invalid ticket data format");
+                document.body.innerHTML = "<h1>Error: Invalid ticket data</h1>";
+            }
+        });
+    </script>
+</body>
+</html>
