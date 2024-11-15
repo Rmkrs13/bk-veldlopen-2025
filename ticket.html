@@ -157,6 +157,14 @@
             color: #ff0000;
         }
 
+        .download-pdf-btn {
+            color: #ffffff;
+        }
+
+        .download-pdf-btn:hover {
+            color: #ffffff;
+        }
+
         #shareButton {
             background-color: #ffffff;
             border: none;
@@ -260,14 +268,16 @@
         <div class="footer">
             <img src="./images/ticketsponsors.svg" alt="Sponsors">
         </div>
+        <a href="#" target="_blank" class="download-pdf-btn" id="downloadPdfLink">Download PDF</a>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script>
+
         function base64Encode(data) {
             return btoa(JSON.stringify(data));
         }
-    
+
         function base64Decode(encodedData) {
             try {
                 return JSON.parse(atob(encodedData));
@@ -281,7 +291,15 @@
             return base64Decode(hash);
         }
     
-        const data = getUrlData();
+        const data = getUrlData(); // Your existing function to parse the hash
+        updateDownloadPdfLink(); // Ensure the PDF link updates immediately
+
+        if (!data) {
+            document.getElementById("ticket").style.display = "none";
+            document.getElementById("placeholder").style.display = "block";
+        } else {
+            // The rest of your ticket logic here
+        }
         let currentTicket = 0;
     
         function setLanguageText() {
@@ -419,6 +437,13 @@
                     console.error('Failed to copy link:', err);
                 });
             }
+        }
+
+
+        function updateDownloadPdfLink() {
+            const hash = window.location.hash; // Get the current hash
+            const pdfLinkElement = document.getElementById('downloadPdfLink');
+            pdfLinkElement.href = `${window.location.origin}${window.location.pathname.replace('ticket', 'ticket/pdf')}${hash}`;
         }
 
     </script>
