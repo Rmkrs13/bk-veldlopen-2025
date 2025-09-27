@@ -696,13 +696,38 @@ flex-wrap: wrap;
 footer {
     position: fixed;
     bottom: 0;
-    bottom: env(safe-area-inset-bottom, 0);
+    left: 0;
+    right: 0;
     width: 100%;
+    z-index: 1000;
+    /* Force hardware acceleration */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+/* Specific fix for iOS Safari dynamic viewport */
+@supports (-webkit-touch-callout: none) {
+    footer {
+        /* Use constant for older iOS versions */
+        bottom: constant(safe-area-inset-bottom);
+        /* Use env for newer iOS versions */  
+        bottom: env(safe-area-inset-bottom);
+        /* Alternative: use small viewport height to lock position */
+        position: fixed;
+    }
 }
 
 #mobile-menu {
-    display: none;
-    padding-bottom: env(safe-area-inset-bottom, 0);
+    display: block;
+}
+
+/* Hide mobile menu on larger screens */
+@media screen and (min-width:1016px) {
+    #mobile-menu {
+        display: none;
+    }
 }
 
 #mobile-nav {
@@ -742,9 +767,11 @@ footer {
     gap: 16px;
     align-items: center;
     padding: 8px;
-    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0));
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
     background-color: #f0f0f0;
-
+    /* Fix for Safari's dynamic viewport */
+    position: relative;
+    margin-bottom: 0;
 }
 
 .clubsponsors img {
@@ -752,6 +779,19 @@ footer {
     width: auto;
     padding-top: 8px;
     padding-bottom: 8px;
+}
+
+/* iOS Safari footer fix - simplified approach */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    #mobile-menu {
+        /* Add padding for safe area */
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .clubsponsors {
+        /* Ensure sponsors sit above safe area */
+        padding-bottom: max(8px, env(safe-area-inset-bottom));
+    }
 }
 
 @media screen and (min-width:425px) {
