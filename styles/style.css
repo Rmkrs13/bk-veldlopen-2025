@@ -696,11 +696,13 @@ flex-wrap: wrap;
 footer {
     position: fixed;
     bottom: 0;
+    bottom: env(safe-area-inset-bottom, 0);
     width: 100%;
 }
 
 #mobile-menu {
     display: none;
+    padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 #mobile-nav {
@@ -740,6 +742,7 @@ footer {
     gap: 16px;
     align-items: center;
     padding: 8px;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom, 0));
     background-color: #f0f0f0;
 
 }
