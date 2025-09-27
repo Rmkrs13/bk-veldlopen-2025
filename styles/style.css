@@ -700,27 +700,50 @@ footer {
     right: 0;
     width: 100%;
     z-index: 1000;
+    /* Force hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
-/* iOS Safari specific fix using -webkit-fill-available */
-@supports (-webkit-touch-callout: none) {
+/* iOS Safari specific fix - use dvh units for dynamic viewport */
+@supports (bottom: env(safe-area-inset-bottom)) {
     footer {
-        /* This locks the footer to the actual viewport bottom */
+        /* Stick to the actual bottom of the visual viewport */
         position: fixed;
         bottom: 0;
-        /* Add safe area padding */
-        padding-bottom: env(safe-area-inset-bottom);
+        bottom: env(safe-area-inset-bottom, 0);
+        /* Prevent subpixel rendering issues */
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+}
+
+/* Additional iOS viewport handling */
+@supports (-webkit-touch-callout: none) {
+    /* Ensure body takes full height without causing scroll issues */
+    html {
+        height: 100%;
+        /* Use CSS environment variable for iOS 11+ */
+        height: 100vh;
+        height: -webkit-fill-available;
     }
     
-    /* Additional fix for dynamic viewport */
     body {
-        /* Use the actual viewport height */
+        min-height: 100%;
         min-height: 100vh;
         min-height: -webkit-fill-available;
+        /* Add padding to prevent content from going under footer */
+        padding-bottom: 80px; /* Adjust based on footer height */
     }
     
-    html {
-        height: -webkit-fill-available;
+    /* When viewport changes (URL bar hides/shows) */
+    @media (max-height: 500px) {
+        footer {
+            /* Use fixed positioning with viewport-relative bottom */
+            bottom: max(env(safe-area-inset-bottom), 0px);
+        }
     }
 }
 
