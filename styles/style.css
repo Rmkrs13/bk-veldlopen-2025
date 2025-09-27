@@ -486,7 +486,7 @@ ol {
 
 .table-title {
     color: #f0f0f0;
-    background-color: #39a935;
+    background-color: #003781;
     font-family: 'Intro_rustbase';
     padding: 16px;
     text-transform: uppercase;
@@ -700,22 +700,27 @@ footer {
     right: 0;
     width: 100%;
     z-index: 1000;
-    /* Force hardware acceleration */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
 }
 
-/* Specific fix for iOS Safari dynamic viewport */
+/* iOS Safari specific fix using -webkit-fill-available */
 @supports (-webkit-touch-callout: none) {
     footer {
-        /* Use constant for older iOS versions */
-        bottom: constant(safe-area-inset-bottom);
-        /* Use env for newer iOS versions */  
-        bottom: env(safe-area-inset-bottom);
-        /* Alternative: use small viewport height to lock position */
+        /* This locks the footer to the actual viewport bottom */
         position: fixed;
+        bottom: 0;
+        /* Add safe area padding */
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    /* Additional fix for dynamic viewport */
+    body {
+        /* Use the actual viewport height */
+        min-height: 100vh;
+        min-height: -webkit-fill-available;
+    }
+    
+    html {
+        height: -webkit-fill-available;
     }
 }
 
