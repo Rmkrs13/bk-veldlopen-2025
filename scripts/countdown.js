@@ -6,7 +6,7 @@ const targetDateString = new Intl.DateTimeFormat('en-US', {
     minute: '2-digit',
     second: '2-digit',
     timeZone: 'Europe/Brussels'
-}).format(new Date(2024, 10, 17, 10, 0, 0));  // Remember, months are 0-indexed in JavaScript
+}).format(new Date(2025, 10, 30, 10, 0, 0));  // Remember, months are 0-indexed in JavaScript
 
 const targetDate = new Date(targetDateString);
 

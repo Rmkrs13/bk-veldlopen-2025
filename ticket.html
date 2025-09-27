@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Standard Meta Tags -->
-    <title>Tickets - BK/CB Cross 2024</title>
-    <meta name="description" content="17 nov 2024">
+    <title>Tickets - BK/CB Cross 2025</title>
+    <meta name="description" content="30 nov 2025">
     <meta name="author" content="A.C. Hulshout">
 
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Tickets - BK/CB Cross 2024">
+    <meta property="og:title" content="Tickets - BK/CB Cross 2025">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://crosshulshout.be/banner.png">
-    <meta property="og:description" content="17 nov 2024">
+    <meta property="og:description" content="30 nov 2025">
     <meta property="og:url" content="https://crosshulshout.be/ticket">
-    <meta property="og:site_name" content="Tickets - BK/CB Cross 2024">
+    <meta property="og:site_name" content="Tickets - BK/CB Cross 2025">
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png">
@@ -232,7 +232,6 @@
         <!-- Header with logos -->
         <div class="header">
             <img src="./images/logo.png" alt="achulshout-logo">
-            <img src="./images/crosscup.png" alt="crosscup logo">
             <img src="./images/logoBA.png" alt="belgianathletics-logo">
         </div>
 
@@ -241,7 +240,7 @@
             <p class="ticket-progress" id="ticketProgress" style="padding-right: 8px; margin-top: 0;">1/1</p>
             <br>
             <h1 id="eventTitle">BK Veldlopen</h1>
-            <h3>17 nov 2024</h3>
+            <h3>30 nov 2025</h3>
             <p><span id="ticketName"></span></p>
             <div class="ticket-details">
                 <div id="qrCode" class="qr-code"></div>
@@ -416,12 +415,12 @@
             const currentData = { ids: [ids[currentTicket]], names: [names[currentTicket]] };
             const encodedData = base64Encode(currentData);
             const shareUrl = `${window.location.origin}${window.location.pathname}#${encodedData}`;
-            const ticketName = names[currentTicket] || "Tickets - BK/CB Cross 2024";
+            const ticketName = names[currentTicket] || "Tickets - BK/CB Cross 2025";
     
             if (navigator.share) {
                 navigator.share({
                     title: ticketName,
-                    text: 'Tickets - BK/CB Cross 2024 - ' + ticketName,
+                    text: 'Tickets - BK/CB Cross 2025 - ' + ticketName,
                     url: shareUrl
                 })
                 .then(() => {
