@@ -708,10 +708,13 @@ footer {
 /* Mobile-specific fix for Safari viewport issues */
 @media screen and (max-width: 768px) {
     footer {
-        /* Negative value only on mobile to push it down slightly */
-        bottom: -3px;
-        /* Add padding to compensate for negative bottom */
-        padding-bottom: 10px;
+        /* More aggressive negative value to ensure it stays at bottom */
+        bottom: -10px;
+        /* Add colored padding underneath */
+        padding-bottom: 20px;
+        background-color: #f0f0f0;
+        /* Extend background to cover the padding area */
+        box-shadow: 0 20px 0 20px #f0f0f0;
     }
 }
 
@@ -719,11 +722,11 @@ footer {
 @supports (-webkit-touch-callout: none) {
     @media screen and (max-width: 768px) {
         footer {
-            /* Use negative bottom to compensate for Safari's viewport issues */
-            bottom: -5px;
-            padding-bottom: 15px;
-            /* Ensure it extends beyond viewport */
-            padding-bottom: calc(15px + env(safe-area-inset-bottom, 0));
+            /* Even more aggressive negative bottom for Safari */
+            bottom: -15px;
+            padding-bottom: 25px;
+            background-color: #f0f0f0;
+            box-shadow: 0 25px 0 25px #f0f0f0;
         }
     }
     
