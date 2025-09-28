@@ -693,46 +693,63 @@ flex-wrap: wrap;
 
 }
 
+/* CSS custom property for safe area */
+:root {
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Mobile layout: grid with sticky footer */
+@media screen and (max-width: 768px) {
+    html {
+        height: 100%;
+    }
+    
+    body {
+        min-height: 100vh;
+        min-height: 100svh; /* fallback for dynamic viewport */
+        display: grid;
+        grid-template-rows: 1fr auto; /* content grows, footer at bottom */
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Prefer dynamic viewport units where supported */
+    @supports (height: 100dvh) {
+        body {
+            min-height: 100dvh;
+        }
+    }
+    
+    /* Main content wrapper - make it scrollable */
+    .main-wrapper {
+        min-height: 0;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
 footer {
-    position: fixed;
+    position: sticky;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
     z-index: 1000;
-    /* Force hardware acceleration */
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    background-color: #f0f0f0;
+    /* Safe area padding for home indicator */
+    padding-bottom: max(var(--safe-bottom), 8px);
 }
 
-/* Mobile-specific fix for Safari viewport issues */
-@media screen and (max-width: 768px) {
+/* Desktop: keep fixed positioning */
+@media screen and (min-width: 769px) {
     footer {
-        /* More aggressive negative value to ensure it stays at bottom */
-        bottom: -20px;
-        /* Add colored padding underneath */
-        padding-bottom: 30px;
-        background-color: #f0f0f0;
-        /* Extend background to cover the padding area */
-        box-shadow: 0 20px 0 20px #f0f0f0;
-    }
-}
-
-/* iOS Safari specific fix */
-@supports (-webkit-touch-callout: none) {
-    @media screen and (max-width: 768px) {
-        footer {
-            /* Even more aggressive negative bottom for Safari */
-            bottom: -15px;
-            padding-bottom: 25px;
-            background-color: #f0f0f0;
-            box-shadow: 0 25px 0 25px #f0f0f0;
-        }
+        position: fixed;
+        bottom: 0;
+        padding-bottom: 0;
     }
     
     body {
-        /* Add padding to prevent content from going under footer */
-        padding-bottom: 80px;
+        padding-bottom: 80px; /* Prevent content from going under footer */
     }
 }
 
