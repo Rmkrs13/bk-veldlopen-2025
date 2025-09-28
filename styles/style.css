@@ -715,32 +715,40 @@ footer {
     padding-bottom: var(--safe-bottom);
 }
 
-/* Mobile specific adjustments */
+/* Mobile specific adjustments for iOS 18 bug */
 @media screen and (max-width: 768px) {
-    body {
-        /* Add padding to prevent content from going under footer */
-        padding-bottom: 80px;
+    footer {
+        /* iOS 18 Safari fix: push footer below viewport edge */
+        position: fixed;
+        bottom: -20px;
+        /* Add padding to extend background */
+        padding-bottom: calc(30px + var(--safe-bottom));
+        /* Add background extension */
+        box-shadow: 0 40px 0 40px #f0f0f0;
+        /* Force hardware acceleration */
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
     }
     
-    /* iOS Safari specific - use supports to target webkit */
+    body {
+        /* Add padding to prevent content from going under footer */
+        padding-bottom: 100px;
+    }
+    
+    /* iOS 18 specific targeting */
     @supports (-webkit-touch-callout: none) {
         footer {
-            /* Ensure footer sticks to visual viewport */
-            position: fixed;
-            bottom: 0;
-            /* Add extra padding for safe area */
-            padding-bottom: max(var(--safe-bottom), 10px);
-            /* Force compositing layer */
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
+            /* Even more aggressive for iOS 18 */
+            bottom: -25px;
+            padding-bottom: calc(35px + env(safe-area-inset-bottom));
+            /* Larger shadow to ensure no gaps */
+            box-shadow: 0 50px 0 50px #f0f0f0;
         }
         
-        /* Prevent body from scrolling under footer on iOS */
         body {
-            /* Use dynamic viewport height if supported */
-            min-height: 100vh;
-            min-height: 100dvh;
-            padding-bottom: 100px;
+            padding-bottom: 120px;
         }
     }
 }
