@@ -695,55 +695,31 @@ flex-wrap: wrap;
 
 footer {
     position: fixed;
-    bottom: 0;
+    bottom: -2px; /* Negative value to push it down slightly */
     left: 0;
     right: 0;
     width: 100%;
     z-index: 1000;
+    /* Add padding to compensate for negative bottom */
+    padding-bottom: 10px;
     /* Force hardware acceleration */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
 }
 
-/* iOS Safari specific fix - use dvh units for dynamic viewport */
-@supports (bottom: env(safe-area-inset-bottom)) {
-    footer {
-        /* Stick to the actual bottom of the visual viewport */
-        position: fixed;
-        bottom: 0;
-        bottom: env(safe-area-inset-bottom, 0);
-        /* Prevent subpixel rendering issues */
-        transform: translate3d(0, 0, 0);
-        -webkit-transform: translate3d(0, 0, 0);
-    }
-}
-
-/* Additional iOS viewport handling */
+/* iOS Safari specific fix */
 @supports (-webkit-touch-callout: none) {
-    /* Ensure body takes full height without causing scroll issues */
-    html {
-        height: 100%;
-        /* Use CSS environment variable for iOS 11+ */
-        height: 100vh;
-        height: -webkit-fill-available;
+    footer {
+        /* Use negative bottom to compensate for Safari's viewport issues */
+        bottom: -5px;
+        padding-bottom: 15px;
+        /* Ensure it extends beyond viewport */
+        padding-bottom: calc(15px + env(safe-area-inset-bottom, 0));
     }
     
     body {
-        min-height: 100%;
-        min-height: 100vh;
-        min-height: -webkit-fill-available;
         /* Add padding to prevent content from going under footer */
-        padding-bottom: 80px; /* Adjust based on footer height */
-    }
-    
-    /* When viewport changes (URL bar hides/shows) */
-    @media (max-height: 500px) {
-        footer {
-            /* Use fixed positioning with viewport-relative bottom */
-            bottom: max(env(safe-area-inset-bottom), 0px);
-        }
+        padding-bottom: 80px;
     }
 }
 
