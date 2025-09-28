@@ -1,35 +1,62 @@
 $(document).ready(function() {
     var lastScrollTop = 0;
+    var isScrollingDown = false;
+    var scrollTimeout;
     
     // Detect iOS Safari (iOS 18 has a positioning bug)
     var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     var isIOSSafari = isIOS && isSafari;
     
-    // iOS 18 Safari fix - use visual viewport API
-    function fixIOSFooter() {
+    // iOS 18 Safari fix - hide footer during scroll down, reposition when stopped
+    function handleIOSFooter() {
         if (!isIOSSafari) return;
         
         var footer = $('footer');
         
-        if (window.visualViewport) {
-            // Calculate the offset between layout viewport and visual viewport
-            var visualBottom = window.visualViewport.height + window.visualViewport.offsetTop;
-            var layoutHeight = window.innerHeight;
-            var offset = Math.max(0, layoutHeight - visualBottom);
-            
-            // Apply the offset to keep footer at visual viewport bottom
-            footer.css('bottom', offset + 'px');
-        } else {
-            // Fallback for older iOS versions
-            footer.css('bottom', '0px');
+        // Clear any existing timeout
+        clearTimeout(scrollTimeout);
+        
+        if (isScrollingDown) {
+            // Hide footer while scrolling down to avoid floating issue
+            footer.css({
+                'opacity': '0',
+                'pointer-events': 'none',
+                'transition': 'opacity 0.2s'
+            });
         }
+        
+        // Show footer again after scroll stops
+        scrollTimeout = setTimeout(function() {
+            // Recalculate position using getBoundingClientRect
+            var rect = footer[0].getBoundingClientRect();
+            var windowHeight = window.innerHeight;
+            
+            // Check if footer is mispositioned
+            if (rect.bottom < windowHeight - 10) {
+                // Force reposition to bottom
+                footer.css({
+                    'position': 'fixed',
+                    'bottom': '0px',
+                    'transform': 'translateZ(0)'
+                });
+            }
+            
+            // Show footer
+            footer.css({
+                'opacity': '1',
+                'pointer-events': 'auto',
+                'transition': 'opacity 0.2s'
+            });
+        }, 150);
     }
 
     $(window).scroll(function() {
         var currentScrollTop = $(this).scrollTop();
+        
+        isScrollingDown = currentScrollTop > lastScrollTop;
 
-        if (currentScrollTop > lastScrollTop) {
+        if (isScrollingDown) {
             // User is scrolling down
             $('#mobile-menu').show();
         } else {
@@ -39,31 +66,40 @@ $(document).ready(function() {
 
         lastScrollTop = currentScrollTop;
         
-        // Fix iOS footer position on scroll
+        // Handle iOS footer
         if (isIOSSafari) {
-            fixIOSFooter();
+            handleIOSFooter();
         }
     });
     
-    // iOS 18: Listen to visual viewport changes
-    if (isIOSSafari && window.visualViewport) {
-        window.visualViewport.addEventListener('resize', fixIOSFooter);
-        window.visualViewport.addEventListener('scroll', fixIOSFooter);
-    }
-    
-    // Also fix on resize and orientation change
+    // Touch events for more responsive handling on iOS
     if (isIOSSafari) {
-        $(window).on('resize orientationchange', function() {
-            fixIOSFooter();
+        var touchStartY = 0;
+        
+        $(document).on('touchstart', function(e) {
+            touchStartY = e.originalEvent.touches[0].clientY;
         });
         
-        // Initial fix
-        setTimeout(fixIOSFooter, 100);
-        setTimeout(fixIOSFooter, 500);
+        $(document).on('touchmove', function(e) {
+            var touchY = e.originalEvent.touches[0].clientY;
+            var deltaY = touchStartY - touchY;
+            
+            if (Math.abs(deltaY) > 5) {
+                isScrollingDown = deltaY > 0;
+                handleIOSFooter();
+            }
+        });
         
-        // Fix after any focus events (keyboard show/hide)
-        $('input, textarea').on('blur focus', function() {
-            setTimeout(fixIOSFooter, 300);
+        // Fix after orientation change
+        $(window).on('orientationchange', function() {
+            setTimeout(function() {
+                $('footer').css({
+                    'position': 'fixed',
+                    'bottom': '0px',
+                    'opacity': '1',
+                    'pointer-events': 'auto'
+                });
+            }, 500);
         });
     }
 });
