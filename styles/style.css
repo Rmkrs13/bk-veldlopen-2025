@@ -499,7 +499,7 @@ ol {
 .table-subtitle {
     color: #060606;
     background-color: #eeddf4;
-    font-family: 'Muller';  /* Changed from Mullerbold to regular */
+    font-family: inherit;  /* Use default font instead of Muller */
     font-weight: normal;  /* Ensure not bold */
 }
 
