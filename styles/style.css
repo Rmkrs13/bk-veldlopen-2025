@@ -709,9 +709,9 @@ footer {
 @media screen and (max-width: 768px) {
     footer {
         /* More aggressive negative value to ensure it stays at bottom */
-        bottom: -10px;
+        bottom: -20px;
         /* Add colored padding underneath */
-        padding-bottom: 20px;
+        padding-bottom: 30px;
         background-color: #f0f0f0;
         /* Extend background to cover the padding area */
         box-shadow: 0 20px 0 20px #f0f0f0;
