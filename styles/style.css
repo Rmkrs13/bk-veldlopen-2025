@@ -715,16 +715,14 @@ footer {
     padding-bottom: var(--safe-bottom);
 }
 
-/* Mobile specific adjustments for iOS 18 bug */
+/* Mobile specific adjustments */
 @media screen and (max-width: 768px) {
     footer {
-        /* iOS 18 Safari fix: push footer below viewport edge */
+        /* Standard mobile positioning */
         position: fixed;
-        bottom: -20px;
-        /* Add padding to extend background */
-        padding-bottom: calc(30px + var(--safe-bottom));
-        /* Add background extension */
-        box-shadow: 0 40px 0 40px #f0f0f0;
+        bottom: 0;
+        /* Padding for safe area */
+        padding-bottom: calc(10px + var(--safe-bottom));
         /* Force hardware acceleration */
         transform: translate3d(0, 0, 0);
         -webkit-transform: translate3d(0, 0, 0);
@@ -737,14 +735,15 @@ footer {
         padding-bottom: 100px;
     }
     
-    /* iOS 18 specific targeting */
+    /* iOS specific targeting */
     @supports (-webkit-touch-callout: none) {
         footer {
-            /* Even more aggressive for iOS 18 */
-            bottom: -25px;
-            padding-bottom: calc(35px + env(safe-area-inset-bottom));
-            /* Larger shadow to ensure no gaps */
-            box-shadow: 0 50px 0 50px #f0f0f0;
+            /* Let JavaScript handle the positioning */
+            position: fixed;
+            /* Ensure proper layering */
+            z-index: 9999;
+            /* Add safe area padding */
+            padding-bottom: env(safe-area-inset-bottom, 10px);
         }
         
         body {
