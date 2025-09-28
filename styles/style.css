@@ -695,26 +695,36 @@ flex-wrap: wrap;
 
 footer {
     position: fixed;
-    bottom: -2px; /* Negative value to push it down slightly */
+    bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
     z-index: 1000;
-    /* Add padding to compensate for negative bottom */
-    padding-bottom: 10px;
     /* Force hardware acceleration */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
 }
 
+/* Mobile-specific fix for Safari viewport issues */
+@media screen and (max-width: 768px) {
+    footer {
+        /* Negative value only on mobile to push it down slightly */
+        bottom: -3px;
+        /* Add padding to compensate for negative bottom */
+        padding-bottom: 10px;
+    }
+}
+
 /* iOS Safari specific fix */
 @supports (-webkit-touch-callout: none) {
-    footer {
-        /* Use negative bottom to compensate for Safari's viewport issues */
-        bottom: -5px;
-        padding-bottom: 15px;
-        /* Ensure it extends beyond viewport */
-        padding-bottom: calc(15px + env(safe-area-inset-bottom, 0));
+    @media screen and (max-width: 768px) {
+        footer {
+            /* Use negative bottom to compensate for Safari's viewport issues */
+            bottom: -5px;
+            padding-bottom: 15px;
+            /* Ensure it extends beyond viewport */
+            padding-bottom: calc(15px + env(safe-area-inset-bottom, 0));
+        }
     }
     
     body {
