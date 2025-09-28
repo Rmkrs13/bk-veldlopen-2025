@@ -699,49 +699,53 @@ flex-wrap: wrap;
     --safe-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* Mobile layout: grid with sticky footer */
-@media screen and (max-width: 768px) {
-    html {
-        height: 100%;
-    }
-    
-    body {
-        min-height: 100vh;
-        min-height: 100svh; /* fallback for dynamic viewport */
-        display: grid;
-        grid-template-rows: 1fr auto; /* content grows, footer at bottom */
-        margin: 0;
-        padding: 0;
-    }
-    
-    /* Prefer dynamic viewport units where supported */
-    @supports (height: 100dvh) {
-        body {
-            min-height: 100dvh;
-        }
-    }
-    
-    /* Main content wrapper - make it scrollable */
-    .main-wrapper {
-        min-height: 0;
-        overflow: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
 footer {
-    position: sticky;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     width: 100%;
     z-index: 1000;
     background-color: #f0f0f0;
-    /* Safe area padding for home indicator */
-    padding-bottom: max(var(--safe-bottom), 8px);
+    /* Hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    will-change: transform;
+    /* Safe area padding */
+    padding-bottom: var(--safe-bottom);
 }
 
-/* Desktop: keep fixed positioning */
+/* Mobile specific adjustments */
+@media screen and (max-width: 768px) {
+    body {
+        /* Add padding to prevent content from going under footer */
+        padding-bottom: 80px;
+    }
+    
+    /* iOS Safari specific - use supports to target webkit */
+    @supports (-webkit-touch-callout: none) {
+        footer {
+            /* Ensure footer sticks to visual viewport */
+            position: fixed;
+            bottom: 0;
+            /* Add extra padding for safe area */
+            padding-bottom: max(var(--safe-bottom), 10px);
+            /* Force compositing layer */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        
+        /* Prevent body from scrolling under footer on iOS */
+        body {
+            /* Use dynamic viewport height if supported */
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding-bottom: 100px;
+        }
+    }
+}
+
+/* Desktop: standard fixed positioning */
 @media screen and (min-width: 769px) {
     footer {
         position: fixed;
@@ -750,7 +754,7 @@ footer {
     }
     
     body {
-        padding-bottom: 80px; /* Prevent content from going under footer */
+        padding-bottom: 80px;
     }
 }
 
