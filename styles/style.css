@@ -499,11 +499,12 @@ ol {
 .table-subtitle {
     color: #060606;
     background-color: #eeddf4;
-    font-family: 'Mullerbold';
+    font-family: 'Muller';  /* Changed from Mullerbold to regular */
+    font-weight: normal;  /* Ensure not bold */
 }
 
 .th-main {
-    background-color: #e2dd29;
+    background-color: #a8c8ec;  /* Light blue instead of yellow */
 }
 
 #course figure div {
