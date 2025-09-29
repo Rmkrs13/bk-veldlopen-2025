@@ -412,6 +412,7 @@ a .logo {
     flex-direction: column;
     gap: 20px;
     background-color: #4e0C69;
+    justify-content: flex-end;
 }
 
 #hero-desktop {
@@ -440,7 +441,7 @@ a .logo {
     margin: 0;
     padding: 0;
     color: #4e0c69;
-    font-size: 4.5em;
+    font-size: 5.5em;
     font-family: 'Intro_rustbase';
 }
 
@@ -462,25 +463,12 @@ a .logo {
 /* Date and location box */
 .date-location-box {
     background: white;
-    padding: 25px;
+    padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     text-align: center;
 }
 
-.date-text {
-    color: #4e0c69;
-    font-family: 'Intro_rustbase';
-    font-size: 1.8em;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.location-text {
-    color: #060606;
-    font-family: 'Intro_rustbase';
-    font-size: 1.4em;
-}
 
 /* Bond sponsors container */
 .bond-sponsors-container {
@@ -494,8 +482,8 @@ a .logo {
 }
 
 .bond-sponsors-container img {
-    width: 90%;
-    max-width: 200px;
+    width: calc(100% - 20px);
+    max-width: none;
     height: auto;
 }
 
@@ -508,7 +496,7 @@ a .logo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px; /* Space between logos */
+    gap: 25px; /* Space between logos */
 }
 
 .domo-sponsors-container img {
@@ -908,6 +896,13 @@ footer {
     }
 }
 
+/* Desktop: hide footer initially on page load */
+@media screen and (min-width: 1016px) {
+    footer {
+        display: none;
+    }
+}
+
 #mobile-menu {
     display: block;
 }
@@ -1154,7 +1149,7 @@ footer {
         border-radius: 0; /* No rounded corners */
         width: calc(100% - 40px);
         display: block;
-        margin: 40px 20px 0 20px; /* Add top margin for padding */
+        margin: 80px 20px 0 20px; /* Add top margin for padding */
     }
     
     .right-section {

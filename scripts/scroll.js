@@ -39,16 +39,38 @@ $(document).ready(function() {
         }
     }
 
-    // Handle scroll for mobile menu visibility
+    // Handle scroll for mobile menu and desktop sponsors bar visibility
     $(window).scroll(function() {
         var currentScrollTop = $(this).scrollTop();
+        var windowWidth = $(window).width();
 
-        if (currentScrollTop > lastScrollTop) {
-            // User is scrolling down
-            $('#mobile-menu').show();
-        } else {
-            // User is scrolling up
-            $('#mobile-menu').hide();
+        // Mobile menu logic
+        if (windowWidth <= 1015) {
+            if (currentScrollTop > lastScrollTop) {
+                // User is scrolling down
+                $('#mobile-menu').show();
+            } else {
+                // User is scrolling up
+                $('#mobile-menu').hide();
+            }
+        }
+        
+        // Desktop sponsors bar logic
+        if (windowWidth > 1015) {
+            var heroSection = $('.desktop-layout');
+            if (heroSection.length) {
+                // Show sponsors bar after scrolling 50% of hero height
+                var heroHeight = heroSection.outerHeight();
+                var triggerPoint = heroSection.offset().top + (heroHeight * 0.5);
+                
+                if (currentScrollTop > triggerPoint) {
+                    // Scrolled past trigger point - show sponsors bar
+                    $('footer').fadeIn(300);
+                } else {
+                    // Still above trigger point - hide sponsors bar
+                    $('footer').fadeOut(300);
+                }
+            }
         }
 
         lastScrollTop = currentScrollTop;
