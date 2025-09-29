@@ -278,6 +278,7 @@ label {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #4e0c69;
+    z-index: 100; /* Stay above other elements */
 
 }
 
@@ -320,10 +321,10 @@ a .logo {
     justify-content: center;
     align-items: center;
     margin-top: 90px;
-    padding: 24px;
-    padding-bottom: 16px;
-    /* gap: 16px; */
-    background-color: #4e0c69;
+    position: relative;
+    padding: 0;
+    background-color: #4e0C69;
+    z-index: 1; /* Below navbar */
 }
 
 .info .text {
@@ -382,6 +383,148 @@ a .logo {
 .info .titlebar img {
     border: none;
     width: 40%;
+}
+
+/* New layout containers */
+.desktop-layout {
+    display: none;
+}
+
+.mobile-layout {
+    display: block;
+    width: 100%;
+}
+
+/* Desktop split layout */
+.left-section {
+    position: relative;
+    width: 66.66%;
+    display: flex;
+    flex-direction: column;
+    background-color: #4e0C69;
+    padding: 0;
+}
+
+.right-section {
+    width: 33.33%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #4e0C69;
+}
+
+#hero-desktop {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0; /* No rounded corners on image */
+    margin: 0;
+    padding: 0;
+    vertical-align: bottom; /* Remove inline image gap */
+}
+
+/* Title container with all rounded corners */
+.title-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px; /* All corners rounded */
+    margin-top: -4px; /* Negative margin to connect with hero */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.title-container h1 {
+    margin: 0;
+    padding: 0;
+    color: #4e0c69;
+    font-size: 4.5em;
+    font-family: 'Intro_rustbase';
+}
+
+.title-container h3 {
+    margin: 10px 0 15px 0;
+    padding: 0;
+    color: #060606;
+    font-size: 1.8em;
+}
+
+/* Belgian flag bar inside container */
+.belgian-flag-bar {
+    height: 8px;
+    background: linear-gradient(90deg, #000000 33%, #FFD90C 33%, #FFD90C 66%, #EF3340 66%);
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+/* Date and location box */
+.date-location-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.date-text {
+    color: #4e0c69;
+    font-family: 'Intro_rustbase';
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.location-text {
+    color: #060606;
+    font-family: 'Intro_rustbase';
+    font-size: 1.4em;
+}
+
+/* Bond sponsors container */
+.bond-sponsors-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bond-sponsors-container img {
+    width: 90%;
+    max-width: 200px;
+    height: auto;
+}
+
+/* Domo sponsors container */
+.domo-sponsors-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Space between logos */
+}
+
+.domo-sponsors-container img {
+    width: 90%;
+    max-width: 200px;
+    height: auto;
+}
+
+/* Mobile styles */
+.mobile-layout .title-container {
+    margin: 20px;
+    border-radius: 15px;
+}
+
+.mobile-layout .date-location-box {
+    margin: 0 20px 20px 20px;
 }
 
 #crosscup-mobile img {
@@ -971,6 +1114,51 @@ footer {
 
     h3 {
         font-size: 1.5em;
+    }
+    
+    /* Show desktop layout, hide mobile layout */
+    .desktop-layout {
+        display: flex !important;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+    
+    .mobile-layout {
+        display: none !important;
+    }
+    
+    /* Desktop specific overrides */
+    .left-section {
+        width: 66.66%;
+        flex-shrink: 0;
+    }
+    
+    .right-section {
+        width: 33.33%;
+        flex-shrink: 0;
+        background: #f0f0f0;
+    }
+    
+    .title-container {
+        border-radius: 15px; /* All corners rounded */
+        margin: 0 20px 20px 20px;
+        margin-top: -4px; /* Connect to hero */
+    }
+    
+    .date-location-box {
+        margin: 0;
+    }
+    
+    #hero-desktop {
+        border-radius: 0; /* No rounded corners */
+        width: calc(100% - 40px);
+        display: block;
+        margin: 40px 20px 0 20px; /* Add top margin for padding */
+    }
+    
+    .right-section {
+        background-color: #4e0C69;
     }
 
     .navbar nav a,
