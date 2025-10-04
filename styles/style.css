@@ -917,23 +917,62 @@ footer .sponsors-footer img {
     opacity: 0.9;
 }
 
+/* Hide mobile header button on desktop */
+.mobile-header-btn {
+    display: none;
+}
+
 /* Mobile specific adjustments */
 @media screen and (max-width: 768px) {
+    .mobile-header-btn {
+        display: inline-block !important;
+    }
     .countdown {
-        font-size: 1em;
-        gap: 2px;
-        flex-wrap: wrap;
+        font-size: 1.2em;
+        gap: 15px;
+        flex-wrap: nowrap;
+        margin: 10px 0 5px 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+    }
+    
+    .countdown-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
     }
     
     .countdown .number {
-        font-size: 1em;
-        min-width: 25px;
+        font-size: 1.1em;
+        min-width: auto;
+        display: block;
+        text-align: center;
+        margin-bottom: 0;
     }
     
     .countdown .label {
-        font-size: 0.75em;
-        min-width: 50px;
-        margin-right: 8px;
+        font-size: 0.85em;
+        min-width: auto;
+        display: block;
+        text-align: center;
+        margin-right: 0;
+    }
+    
+    /* Mobile nav styling to ensure tickets button is visible */
+    #mobile-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+    }
+    
+    #mobile-nav a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
     }
     
     footer {
@@ -1020,6 +1059,14 @@ footer .sponsors-footer img {
 
 #mobile-nav a {
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mobile-nav a svg {
+    width: 24px;
+    height: 24px;
 }
 
 .color-block {
