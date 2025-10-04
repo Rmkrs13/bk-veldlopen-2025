@@ -508,7 +508,7 @@ a .logo {
 /* Belgian flag bar inside container */
 .belgian-flag-bar {
     height: 12px;
-    background: linear-gradient(90deg, #000000 33%, #FFD90C 33%, #FFD90C 66%, #EF3340 66%);
+    background: linear-gradient(90deg, #000000 33%, #fdc400 33%, #fdc400 66%, #EF3340 66%);
     border-radius: 6px;
     margin: 20px 0;
 }
