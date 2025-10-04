@@ -301,7 +301,7 @@ nav a {
 }
 
 #ticketsmobile {
-    display: none;
+    display: inline-block;
 }
 
 a .logo {
@@ -393,6 +393,8 @@ a .logo {
 .mobile-layout {
     display: block;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 /* Desktop split layout */
@@ -506,9 +508,31 @@ a .logo {
 }
 
 /* Mobile styles */
+.mobile-layout {
+    background-color: #4e0C69;
+    padding-bottom: 40px;
+}
+
+.mobile-layout #hero {
+    width: calc(100% - 40px);
+    height: auto;
+    display: block;
+    margin: 20px 20px -4px 20px;
+    padding: 0;
+    border-radius: 0;
+}
+
 .mobile-layout .title-container {
-    margin: 20px;
+    margin: 0 20px 20px 20px;
     border-radius: 15px;
+}
+
+.mobile-layout .title-container h1 {
+    font-size: 2.3em;
+}
+
+.mobile-layout .title-container h3 {
+    font-size: 1em;
 }
 
 .mobile-layout .date-location-box {
@@ -1206,9 +1230,7 @@ footer .sponsors-footer img {
         align-items: flex-start;
     }
 
-    #ticketsmobile {
-        display: none;
-    }
+    /* Keep tickets button visible on desktop */
 
     #mobile-nav {
         display: none;
