@@ -21,34 +21,59 @@ const hoursLabelElem = document.getElementById('hoursLabel');
 const minutesLabelElem = document.getElementById('minutesLabel');
 const secondsLabelElem = document.getElementById('secondsLabel');
 
+// Mobile elements
+const daysMobileElem = document.getElementById('days-mobile');
+const hoursMobileElem = document.getElementById('hours-mobile');
+const minutesMobileElem = document.getElementById('minutes-mobile');
+const secondsMobileElem = document.getElementById('seconds-mobile');
+
+const daysLabelMobileElem = document.getElementById('daysLabel-mobile');
+const hoursLabelMobileElem = document.getElementById('hoursLabel-mobile');
+const minutesLabelMobileElem = document.getElementById('minutesLabel-mobile');
+const secondsLabelMobileElem = document.getElementById('secondsLabel-mobile');
+
 function updateLanguage() {
     const lang = document.documentElement.lang;
+    let daysText, hoursText, minutesText, secondsText;
+    
     switch(lang) {
         case 'nl':
-            daysLabelElem.textContent = 'dagen';
-            hoursLabelElem.textContent = 'uren';
-            minutesLabelElem.textContent = 'minuten';
-            secondsLabelElem.textContent = 'seconden';
+            daysText = 'dagen';
+            hoursText = 'uren';
+            minutesText = 'minuten';
+            secondsText = 'seconden';
             break;
         case 'fr':
-            daysLabelElem.textContent = 'jours';
-            hoursLabelElem.textContent = 'heures';
-            minutesLabelElem.textContent = 'minutes';
-            secondsLabelElem.textContent = 'secondes';
+            daysText = 'jours';
+            hoursText = 'heures';
+            minutesText = 'minutes';
+            secondsText = 'secondes';
             break;
         case 'de':
-            daysLabelElem.textContent = 'Tage';
-            hoursLabelElem.textContent = 'Stunden';
-            minutesLabelElem.textContent = 'Minuten';
-            secondsLabelElem.textContent = 'Sekunden';
+            daysText = 'Tage';
+            hoursText = 'Stunden';
+            minutesText = 'Minuten';
+            secondsText = 'Sekunden';
             break;
         default:
-            daysLabelElem.textContent = 'days';
-            hoursLabelElem.textContent = 'hours';
-            minutesLabelElem.textContent = 'minutes';
-            secondsLabelElem.textContent = 'seconds';
+            daysText = 'days';
+            hoursText = 'hours';
+            minutesText = 'minutes';
+            secondsText = 'seconds';
             break;
     }
+    
+    // Update desktop labels
+    if (daysLabelElem) daysLabelElem.textContent = daysText;
+    if (hoursLabelElem) hoursLabelElem.textContent = hoursText;
+    if (minutesLabelElem) minutesLabelElem.textContent = minutesText;
+    if (secondsLabelElem) secondsLabelElem.textContent = secondsText;
+    
+    // Update mobile labels
+    if (daysLabelMobileElem) daysLabelMobileElem.textContent = daysText;
+    if (hoursLabelMobileElem) hoursLabelMobileElem.textContent = hoursText;
+    if (minutesLabelMobileElem) minutesLabelMobileElem.textContent = minutesText;
+    if (secondsLabelMobileElem) secondsLabelMobileElem.textContent = secondsText;
 }
 
 function updateClock() {
@@ -65,10 +90,17 @@ function updateClock() {
     const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-    daysElem.textContent = days;
-    hoursElem.textContent = hours;
-    minutesElem.textContent = minutes;
-    secondsElem.textContent = seconds;
+    // Update desktop countdown
+    if (daysElem) daysElem.textContent = days;
+    if (hoursElem) hoursElem.textContent = hours;
+    if (minutesElem) minutesElem.textContent = minutes;
+    if (secondsElem) secondsElem.textContent = seconds;
+    
+    // Update mobile countdown
+    if (daysMobileElem) daysMobileElem.textContent = days;
+    if (hoursMobileElem) hoursMobileElem.textContent = hours;
+    if (minutesMobileElem) minutesMobileElem.textContent = minutes;
+    if (secondsMobileElem) secondsMobileElem.textContent = seconds;
 }
 
 updateLanguage();

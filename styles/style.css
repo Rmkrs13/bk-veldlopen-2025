@@ -550,6 +550,30 @@ a .logo {
 .countdown {
     margin: 16px 0px;
     font-size: 1.4em;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 5px;
+    color: #060606;
+}
+
+.countdown .number {
+    font-family: 'mullerbold';
+    font-size: 1.2em;
+    font-weight: bold;
+    min-width: 35px;
+    display: inline-block;
+    text-align: right;
+    vertical-align: baseline;
+}
+
+.countdown .label {
+    font-size: 0.9em;
+    margin-right: 15px;
+    min-width: 70px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: baseline;
 }
 
 ol {
@@ -895,6 +919,23 @@ footer .sponsors-footer img {
 
 /* Mobile specific adjustments */
 @media screen and (max-width: 768px) {
+    .countdown {
+        font-size: 1em;
+        gap: 2px;
+        flex-wrap: wrap;
+    }
+    
+    .countdown .number {
+        font-size: 1em;
+        min-width: 25px;
+    }
+    
+    .countdown .label {
+        font-size: 0.75em;
+        min-width: 50px;
+        margin-right: 8px;
+    }
+    
     footer {
         /* Standard mobile positioning */
         position: fixed;
