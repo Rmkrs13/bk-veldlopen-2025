@@ -511,6 +511,8 @@ a .logo {
 .mobile-layout {
     background-color: #4e0C69;
     padding-bottom: 40px;
+    min-height: calc(100vh - 180px); /* Account for footer (120px) + mobile nav (50px) + flag (10px) */
+    min-height: calc(100svh - 180px); /* For better mobile support */
 }
 
 .mobile-layout #hero {
