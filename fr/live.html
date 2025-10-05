@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Standard Meta Tags -->
-    <title>CB Cross Hulshout 2025 - Résultats en direct</title>
-    <meta name="description" content="Suivez les résultats en direct du CB Cross">
+    <title>CB Cross-country Hulshout 2025 - Résultats en direct</title>
+    <meta name="description" content="Suivez en direct les résultats du CB Cross-country.">
     <meta name="author" content="A.C. Hulshout">
-    <link rel=”alternate” hreflang="nl" href="https://crosshulshout.be/nl/live" />
+    <link rel=”alternate” hreflang="fr" href="https://crosshulshout.be/fr/live" />
     <link rel=”alternate” hreflang="de" href="https://crosshulshout.be/de/live" />
 
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Résultats en direct - CB Cross Hulshout 2025">
+    <meta property="og:title" content="Résultats en direct - CB Cross-country Hulshout 2025">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://crosshulshout.be/banner.png">
-    <meta property="og:description" content="Suivez les résultats en direct du CB Cross">
+    <meta property="og:description" content="Suivez en direct les résultats du CB Cross-country.">
     <meta property="og:url" content="https://crosshulshout.be/fr/live">
-    <meta property="og:site_name" content="CB Cross Hulshout 2025">
+    <meta property="og:site_name" content="BK Veldlopen Hulshout 2025">
 
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="../icons/apple-touch-icon.png">
@@ -105,7 +105,7 @@
       <div class="language-bar">
         <div class="language-links">
             <div>
-              <!-- <a href="../fr/presse.html">Presse</a> -->
+              <!-- <a href="../nl/pers.html">Pers</a> -->
             </div>
             <div>
               <a href="../nl/live.html">nl</a>
@@ -113,25 +113,26 @@
               <a href="../de/live.html">de</a>
             </div>
         </div>
-       </div> 
+    </div>
   
       <div class="navbar">
         <div>
           <a class="logo" href="../fr.html"><img src="../images/logo.png" alt="achulshout-logo"></a>
           <a class="logo" href="../fr.html"><img src="../images/logoBA.png" alt="belgainathletics-logo"></a>
         </div>
-        <a class ="primary-btn" id="ticketsmobile" href="https://fienta.com/fr/crosshulshout" target="_blank">Tickets</a>
+        <a class ="primary-btn" id="ticketsmobile" href="https://fienta.com/nl/crosshulshout" target="_blank">Tickets</a>
 
         <nav>
           <div class="links">
             <a href="../fr.html">Accueil</a>
-            <a href="../fr.html#participate">S'inscrire</a>
+            <a href="../fr.html#participate">Inscription</a>
             <a href="../fr.html#timetable">Horaire</a>
             <a href="../fr.html#course">Parcours</a>
             <a href="../fr/live.html">Résultats</a>
 
             </div>
-          <a class ="primary-btn" id="desktop-c2A" href="https://fienta.com/fr/crosshulshout" target="_blank">Tickets</a>
+          <a class ="primary-btn" id="desktop-c2A" href="https://fienta.com/nl/crosshulshout" target="_blank">Tickets</a>
+
 
         </nav>
       </div>
@@ -142,16 +143,15 @@
     </div>
 
     <div class="main-content">
-      <section id="results">
+      <section id="results" style="padding-top: 28px;">
         <figure>
-          <h2>🏆 Résultats en direct</h2>
-          <label for="year-select">Afficher les résultats de l'édition:</label>
-          <select id="year-select">
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-          </select>
-          <br>
-          <br>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <h2 style="margin: 0;">🏆 Résultats en direct</h2>
+            <select id="year-select" style="margin: 0;">
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
       
           <span style="z-index: 0;">
             <span>
@@ -222,26 +222,494 @@
                   z-index: 0;
                   display: block; /* Ensure the div is always visible */
                 }
+
+                /* Custom styling for RaceResult tables */
+                #divRRPublish .MainTable {
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                  background-color: #f0f0f0 !important;
+                  border-collapse: collapse;
+                  width: 100%;
+                }
+
+                #divRRPublish .MainTable th {
+                  background-color: #4e0c69 !important;
+                  color: #f0f0f0 !important;
+                  font-family: 'mullerbold', sans-serif !important;
+                  padding: 12px 8px !important;
+                  text-align: left !important;
+                  border-bottom: 2px solid #060606 !important;
+                }
+                
+                #divRRPublish .MainTable thead tr {
+                  border-left: 4px solid #4e0c69 !important;
+                }
+
+                #divRRPublish .MainTable td {
+                  padding: 8px !important;
+                  border-bottom: 1px solid #e0e0e0 !important;
+                  color: #060606 !important;
+                }
+                
+                /* Hide content in comments and favorites columns but keep structure */
+                #divRRPublish .MainTable td[title*="favorite"],
+                #divRRPublish .MainTable td[title*="Favorite"],
+                #divRRPublish .MainTable td[title*="Mark/unmark"] {
+                  color: transparent !important;
+                  font-size: 0 !important;
+                  background-color: transparent !important;
+                }
+                
+                /* Ensure nbsp and any content is invisible */
+                #divRRPublish .MainTable td[title*="Mark/unmark"],
+                #divRRPublish .MainTable td[title*="favorite"] {
+                  visibility: hidden !important;
+                }
+                
+                /* But keep the cell structure */
+                #divRRPublish .MainTable td[title*="Mark/unmark"]::after,
+                #divRRPublish .MainTable td[title*="favorite"]::after {
+                  content: "" !important;
+                  visibility: visible !important;
+                  display: block !important;
+                  width: 100% !important;
+                  height: 100% !important;
+                }
+                
+                #divRRPublish .MainTable td[title*="favorite"] img,
+                #divRRPublish .MainTable td[title*="Favorite"] img,
+                #divRRPublish .MainTable td[title*="Mark/unmark"] img {
+                  display: none !important;
+                }
+                
+                /* Hide comment indicators but keep column structure */
+                #divRRPublish .MainTable td.Comments0::before,
+                #divRRPublish .MainTable td.Comments1::before,
+                #divRRPublish .MainTable td.Comments2::before,
+                #divRRPublish .MainTable td.Comments3::before,
+                #divRRPublish .MainTable td.Comments4::before,
+                #divRRPublish .MainTable td.Comments5::before {
+                  display: none !important;
+                }
+                
+                #divRRPublish .MainTable td.Comments0,
+                #divRRPublish .MainTable td.Comments1,
+                #divRRPublish .MainTable td.Comments2,
+                #divRRPublish .MainTable td.Comments3,
+                #divRRPublish .MainTable td.Comments4,
+                #divRRPublish .MainTable td.Comments5 {
+                  background: transparent !important;
+                  color: transparent !important;
+                  font-size: 0 !important;
+                }
+                
+                /* Hide favorites button in controls */
+                #divRRPublish .btnFavorites {
+                  display: none !important;
+                }
+
+                #divRRPublish .MainTable tbody tr:hover {
+                  background-color: transparent !important;
+                }
+                
+                #divRRPublish .MainTable tbody tr:hover td {
+                  font-weight: bold !important;
+                  color: #4e0c69 !important;
+                }
+
+                /* Style the group headers */
+                #divRRPublish .listGrouping {
+                  background-color: #eeddf4 !important;
+                  color: #4e0c69 !important;
+                  font-family: 'intro_rustbase', sans-serif !important;
+                  font-size: 1.1em !important;
+                  padding: 10px !important;
+                  text-transform: uppercase;
+                  border-left: 4px solid #4e0c69 !important;
+                }
+                
+                #divRRPublish td.listGrouping {
+                  color: #4e0c69 !important;
+                }
+
+                /* Big bold dark purple select box */
+                #year-select {
+                  font-family: 'made_evolve_sansbold', sans-serif;
+                  padding: 10px 30px 10px 12px;
+                  border: 3px solid #4e0c69;
+                  border-radius: 0;
+                  background-color: #4e0c69;
+                  color: #ffffff;
+                  cursor: pointer;
+                  margin: 0;
+                  font-size: 18px;
+                  font-weight: bold;
+                  width: auto;
+                  max-width: 120px;
+                  display: inline-block;
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  appearance: none;
+                  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e');
+                  background-repeat: no-repeat;
+                  background-position: right 12px center;
+                  background-size: 16px;
+                }
+
+                #year-select:hover {
+                  background-color: #060606;
+                  border-color: #060606;
+                }
+                
+                #year-select:focus {
+                  outline: none;
+                  background-color: #060606;
+                  border-color: #060606;
+                }
+
+                /* Minimal search/filter controls */
+                #divRRPublish .ListControl {
+                  background: transparent !important;
+                  padding: 5px 0 !important;
+                  margin: 10px 0 !important;
+                  border: none !important;
+                }
+
+                #divRRPublish .ListControlSearch {
+                  background: transparent !important;
+                  padding: 15px 0 !important;
+                  border: none !important;
+                  display: block !important;
+                  width: 100% !important;
+                  margin-top: 10px !important;
+                  clear: both !important;
+                  text-align: left !important;
+                }
+
+                #divRRPublish .ListControlSearch input {
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                  padding: 12px 16px !important;
+                  border: 2px solid #4e0c69 !important;
+                  border-radius: 0 !important;
+                  background: #f0f0f0 !important;
+                  font-size: 16px !important;
+                  color: #060606 !important;
+                  width: 300px !important;
+                  max-width: 100% !important;
+                  box-sizing: border-box !important;
+                  transition: all 0.2s ease !important;
+                  height: 46px !important;
+                  vertical-align: middle !important;
+                }
+
+                #divRRPublish .ListControlSearch input::placeholder {
+                  color: #999 !important;
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                }
+
+                #divRRPublish .ListControlSearch input:focus {
+                  outline: none !important;
+                  border-color: #4e0c69 !important;
+                  background: #f0f0f0 !important;
+                }
+
+                /* Search button with magnifying glass */
+                #divRRPublish .ListControlSearch button.btnSearch {
+                  background: #4e0c69 !important;
+                  background-color: #4e0c69 !important;
+                  color: white !important;
+                  border: 2px solid #4e0c69 !important;
+                  border-width: 2px !important;
+                  padding: 0 !important;
+                  border-radius: 0 !important;
+                  cursor: pointer;
+                  margin-left: -2px !important;
+                  transition: all 0.2s ease !important;
+                  width: 46px !important;
+                  height: 46px !important;
+                  box-sizing: border-box !important;
+                  position: relative !important;
+                  display: inline-flex !important;
+                  align-items: center !important;
+                  justify-content: center !important;
+                  font-size: 0 !important;
+                  overflow: hidden !important;
+                  text-indent: -9999px !important;
+                  vertical-align: middle !important;
+                }
+                
+                /* Add magnifying glass icon - white for enabled state (non-hover) */
+                #divRRPublish .ListControlSearch button.btnSearch:not(:disabled):not(:hover)::after {
+                  content: "" !important;
+                  display: block !important;
+                  width: 20px !important;
+                  height: 20px !important;
+                  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"%3e%3ccircle cx="11" cy="11" r="8"%3e%3c/circle%3e%3cpath d="m21 21-4.35-4.35"%3e%3c/path%3e%3c/svg%3e') !important;
+                  background-repeat: no-repeat !important;
+                  background-position: center !important;
+                  background-size: 20px 20px !important;
+                  position: absolute !important;
+                  left: 50% !important;
+                  top: 50% !important;
+                  transform: translate(-50%, -50%) !important;
+                  text-indent: 0 !important;
+                }
+                
+                /* Add magnifying glass icon - purple for disabled and hover state */
+                #divRRPublish .ListControlSearch button.btnSearch:disabled::after,
+                #divRRPublish .ListControlSearch button.btnSearch:hover::after {
+                  content: "" !important;
+                  display: block !important;
+                  width: 20px !important;
+                  height: 20px !important;
+                  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%234e0c69" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"%3e%3ccircle cx="11" cy="11" r="8"%3e%3c/circle%3e%3cpath d="m21 21-4.35-4.35"%3e%3c/path%3e%3c/svg%3e') !important;
+                  background-repeat: no-repeat !important;
+                  background-position: center !important;
+                  background-size: 20px 20px !important;
+                  position: absolute !important;
+                  left: 50% !important;
+                  top: 50% !important;
+                  transform: translate(-50%, -50%) !important;
+                  text-indent: 0 !important;
+                }
+
+                /* Search button enabled state - purple background */
+                #divRRPublish .ListControlSearch button.btnSearch:enabled,
+                #divRRPublish .ListControlSearch button.btnSearch:not(:disabled) {
+                  background-color: #4e0c69 !important;
+                  background: #4e0c69 !important;
+                  border: 2px solid #4e0c69 !important;
+                }
+                
+                #divRRPublish .ListControlSearch button.btnSearch:hover:not(:disabled) {
+                  background: #f0f0f0 !important;
+                  background-color: #f0f0f0 !important;
+                  border-color: #4e0c69 !important;
+                  border: 2px solid #4e0c69 !important;
+                }
+
+                /* Search button disabled state - light gray background */
+                #divRRPublish .ListControlSearch button.btnSearch:disabled {
+                  background-color: #f0f0f0 !important;
+                  background: #f0f0f0 !important;
+                  border: 2px solid #4e0c69 !important;
+                  opacity: 1 !important;
+                  cursor: not-allowed !important;
+                }
+                
+                /* Style the clear (x) button */
+                #divRRPublish .ListControlSearch button.btnClearSearch {
+                  background: #f0f0f0 !important;
+                  color: #4e0c69 !important;
+                  border: 2px solid #4e0c69 !important;
+                  padding: 0 !important;
+                  margin-left: 8px !important;
+                  width: 46px !important;
+                  height: 46px !important;
+                  border-radius: 0 !important;
+                  cursor: pointer;
+                  position: relative !important;
+                  display: inline-flex !important;
+                  align-items: center !important;
+                  justify-content: center !important;
+                  transition: all 0.2s ease !important;
+                  vertical-align: middle !important;
+                }
+                
+                /* Hide the original X image and add custom one */
+                #divRRPublish .ListControlSearch button.btnClearSearch img {
+                  display: none !important;
+                }
+                
+                #divRRPublish .ListControlSearch button.btnClearSearch::after {
+                  content: "×" !important;
+                  font-size: 24px !important;
+                  color: #4e0c69 !important;
+                  font-weight: bold !important;
+                  line-height: 1 !important;
+                }
+                
+                #divRRPublish .ListControlSearch button.btnClearSearch:hover {
+                  background: #4e0c69 !important;
+                  border-color: #4e0c69 !important;
+                }
+                
+                #divRRPublish .ListControlSearch button.btnClearSearch:hover::after {
+                  color: #f0f0f0 !important;
+                }
+                
+                /* Hide favorites button */
+                #divRRPublish .ListControlSearch button.btnFavorites {
+                  display: none !important;
+                }
+
+                /* Hide back button */
+                #divRRPublish .ListBack {
+                  display: none !important;
+                }
+
+                /* Keep original medal colors - don't override */
+                /* Gold, silver, bronze medals will use RaceResult's default colors */
+
+                /* Style the "Show all" links */
+                #divRRPublish .aShowAll {
+                  color: #060606 !important;
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                  text-decoration: underline !important;
+                  cursor: pointer;
+                  font-weight: normal !important;
+                  background: transparent !important;
+                  border: none !important;
+                  padding: 0 !important;
+                }
+
+                #divRRPublish .aShowAll:hover {
+                  text-decoration: none !important;
+                  color: #060606 !important;
+                }
+
+                /* Style loading indicator */
+                #divRRPublish .Loading {
+                  color: #4e0c69 !important;
+                  font-family: 'mullerbold', sans-serif !important;
+                  padding: 20px !important;
+                  text-align: center !important;
+                }
+
+                /* Minimal PDF button */
+                #divRRPublish .ListControlPDF {
+                  display: inline-block !important;
+                  background: transparent !important;
+                  color: #060606 !important;
+                  padding: 4px 0 !important;
+                  border: none !important;
+                  border-radius: 0 !important;
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                  cursor: pointer;
+                  margin-right: 8px !important;
+                  font-size: 14px !important;
+                  text-decoration: underline !important;
+                  white-space: nowrap !important;
+                }
+
+                #divRRPublish .ListControlPDF:hover {
+                  background: transparent !important;
+                  color: #060606 !important;
+                  text-decoration: none !important;
+                }
+                
+                /* Hide PDF icon */
+                #divRRPublish .ListControlPDF::before {
+                  display: none !important;
+                }
+
+                /* Clean up the header/footer text */
+                #divRRPublish .ListHeaderFooter {
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                  color: #060606 !important;
+                  padding: 10px !important;
+                  font-size: 0.9em !important;
+                  border-left: 3px solid #4e0c69 !important;
+                  background-color: #f8f8f8 !important;
+                  margin: 10px 0 !important;
+                  margin-left: 0 !important;
+                  margin-right: 0 !important;
+                  width: 100% !important;
+                  max-width: 100% !important;
+                  box-sizing: border-box !important;
+                  display: block !important;
+                }
+
+                /* Style selector/filter menu */
+                #divRRPublish .Selector {
+                  background-color: #f0f0f0 !important;
+                  border: 2px solid #4e0c69 !important;
+                  border-radius: 4px !important;
+                  padding: 5px !important;
+                }
+
+                /* Hide RaceResult and Running Results logos */
+                #divRRPublish > div[style*="position: static"] {
+                  display: none !important;
+                  visibility: hidden !important;
+                  height: 0 !important;
+                  overflow: hidden !important;
+                }
+                
+                #divRRPublish img[src*="Running%20Results"],
+                #divRRPublish img[src*="RunningResults"],
+                #divRRPublish img[src*="running%20results"],
+                #divRRPublish img[src*="RRPublish/picture"],
+                #divRRPublish div[style*="RR_PoweredBy"],
+                #divRRPublish div[style*="background-image"][style*="RRPublish"] {
+                  display: none !important;
+                  visibility: hidden !important;
+                }
+                
+                /* More aggressive hiding of bottom logos */
+                #divRRPublish > div:last-child {
+                  display: none !important;
+                }
+                
+                #divRRPublish div[style*="margin-top: 10px"][style*="padding: 2px"] {
+                  display: none !important;
+                }
+
+                /* Responsive adjustments */
+                @media screen and (max-width: 768px) {
+                  #divRRPublish .MainTable {
+                    font-size: 0.9em;
+                  }
+                  
+                  #divRRPublish .MainTable th,
+                  #divRRPublish .MainTable td {
+                    padding: 4px !important;
+                  }
+                  
+                  #divRRPublish .ListControlSearch {
+                    flex-direction: row !important;
+                    align-items: center !important;
+                    flex-wrap: wrap !important;
+                  }
+                  
+                  #divRRPublish .ListControlSearch input {
+                    max-width: 100% !important;
+                    margin-bottom: 0 !important;
+                    vertical-align: middle !important;
+                  }
+                  
+                  #divRRPublish .ListControlSearch button {
+                    width: auto !important;
+                    display: inline-block !important;
+                    margin-right: 5px !important;
+                    margin-bottom: 0 !important;
+                    vertical-align: middle !important;
+                  }
+                  
+                  #divRRPublish .ListControl {
+                    padding: 5px !important;
+                  }
+                }
               </style>
             </span>
           </span>
         </figure>
-      </section>
+      </section>          
     </div>
+
 
     <div class="contact-wrapper">
       <div class="contact">
         <h2>Contact</h2>
-        <h5>Les Championnats de Belgique de cross 2025 sont organisés par Atletiekclub Hulshout vzw (BE0430.974.067), pour le compte de Belgian Athletics (LBFA).</h5>
-        <h4>Avez-vous une question ?</h4>
+        <h5>Het Belgisch kampioenschap veldlopen 2025 wordt georganiseerd door Atletiekclub Hulshout vzw (BE0430.974.067), in opdracht van Belgian Athletics (KBAB).</h5>
+        <h4>Avez-vous une question?</h4>
             <p>E-mail: <a href="mailto:info@achulshout.be">info@achulshout.be</a></p>
-            <p>Téléphone: <a href="tel:+32475428066">+32 475 42 80 66</a></p>
+            <p>Téléphone: <a href="tel:+32478600349">+32 478 60 03 49</a></p>
 
-        <h4>Adresse</h4>
+        <h4>Coordonnées</h4>
             <table id="adresgegevens">
                 <tr>
-                    <th>Lieu du concours</th>
-                    <th>Organisateur</th>
+                    <th>Lieu de compétition</th>
+                    <th>Organisation</th>
                 </tr>
                 <tr>
                     <td>Sportpark Joris Verhaegen</td>
@@ -256,7 +724,7 @@
                     <td>2235, Hulshout</td>
                 </tr>
                  <tr>
-                    <td class="route"><a href="https://goo.gl/maps/3x4T7UfpZxmmmAkHA" target="_blank">Directions</a></td>
+                    <td class="route"><a href="https://goo.gl/maps/3x4T7UfpZxmmmAkHA" target="_blank">Itinéraire</a></td>
                 </tr>
             </table>
         <br>
@@ -267,7 +735,7 @@
         </div>
 
         <div class="singed">
-          <p>Web par <a href="https://www.linkedin.com/in/lars-rmkrs/" target="_blank">Lars</a></p>
+          <p>Web door <a href="https://www.linkedin.com/in/lars-rmkrs/" target="_blank">Lars</a></p>
           <br>
           <br>
         </div>
@@ -297,7 +765,7 @@
               <path d="M16 5V21" stroke="#F0F0F0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>              
           </a>
-          <a href="https://fienta.com/fr/crosshulshout" target="_blank">
+          <a href="https://fienta.com/nl/crosshulshout" target="_blank">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M18.0467 4.67771C18.3435 4.43167 18.5825 4.13012 18.7483 3.79233C18.9142 3.45453 19.0033 3.08791 19.01 2.7159C19.0114 2.35881 18.9376 2.005 18.7929 1.67485C18.6482 1.34469 18.4354 1.04474 18.1669 0.792275C17.8983 0.53981 17.5793 0.339826 17.2281 0.203852C16.877 0.0678777 16.5007 -0.00139691 16.121 2.1344e-05C15.4787 0.0163086 14.8594 0.227918 14.3558 0.603124C13.7911 1.11975 13.4648 1.82426 13.4472 2.56493C13.452 3.06469 13.6047 3.55332 13.8882 3.97604C14.1718 4.39875 14.5749 4.73886 15.0525 4.95822C15.53 5.17758 16.0631 5.26753 16.592 5.21798C17.1208 5.16844 17.6246 4.98136 18.0467 4.67771ZM8.73927 5.13061C8.73927 5.18119 8.68549 5.18119 8.63252 5.231V5.28158C7.48532 5.489 6.4156 5.97452 5.52923 6.6901C4.99412 7.16388 4.51013 7.68625 4.08434 8.24958C3.01514 9.6581 5.52923 11.016 6.54627 9.60829C7.88277 7.84573 9.54117 7.34378 11.3609 7.89784C10.4515 9.45732 9.59496 10.9632 8.47116 13.079C7.29357 15.2424 4.7803 16.9528 2.31837 15.6447C2.15331 15.5413 1.96796 15.4698 1.77318 15.4346C1.57841 15.3993 1.3781 15.401 1.18401 15.4394C0.989912 15.4778 0.80592 15.5523 0.642803 15.6584C0.479686 15.7645 0.340721 15.9002 0.234044 16.0575C0.127367 16.2147 0.0551205 16.3904 0.0215344 16.5742C-0.0120518 16.7581 -0.00630291 16.9463 0.0384444 17.128C0.0831917 17.3098 0.166038 17.4813 0.282135 17.6325C0.398231 17.7837 0.545244 17.9117 0.714567 18.0088C2.21519 18.8127 3.97144 19.0872 5.66792 18.783C7.3644 18.4788 8.88996 17.6157 9.97065 16.3489C10.0244 16.3489 10.1336 16.3988 10.1842 16.3988C11.7794 17.0226 13.2743 17.8526 14.6256 18.8648C15.2669 19.3668 16.3899 21.9301 17.0321 23.2406C17.1321 23.4249 17.2746 23.5859 17.4492 23.712C17.6237 23.838 17.8259 23.9259 18.0411 23.9692C18.2563 24.0125 18.4791 24.0101 18.6932 23.9623C18.9073 23.9145 19.1074 23.8224 19.2789 23.6927C19.4822 23.5073 19.6137 23.2632 19.6526 22.9994C19.6914 22.7355 19.6353 22.4671 19.4932 22.2367C18.7443 20.7806 17.5137 17.8096 16.4975 17.1022C15.6891 16.4782 14.8502 15.8901 13.9834 15.3397L14.0902 15.2393C13.7407 15.0265 13.3836 14.825 13.0193 14.6354C13.9296 13.0261 14.8391 11.4666 15.8015 9.90716C16.9049 10.2351 18.0793 10.2917 19.2125 10.0714C20.3457 9.85111 21.4 9.36134 22.2746 8.64884C22.8244 8.18874 23.3096 7.6647 23.7187 7.08936C24.7357 5.83181 22.7562 4.57426 21.5795 5.42872C21.5126 5.48638 21.4574 5.55492 21.4165 5.63103C20.8998 6.37686 20.1527 6.9561 19.2756 7.2909C19.2218 7.34071 19.1689 7.34071 19.1689 7.39129H19.1151C18.479 7.59724 17.8012 7.66357 17.1336 7.5852C16.4661 7.50684 15.8264 7.28584 15.2637 6.93916L15.3712 6.838H15.4242C15.3651 6.78511 15.2904 6.75013 15.2099 6.73761C14.8831 6.5344 14.5438 6.34964 14.1937 6.18432C12.5772 5.20472 10.63 4.82786 8.73357 5.12755L8.73927 5.13061Z" fill="#f0f0f0"/>
             </svg>              
@@ -317,7 +785,6 @@
 
       </div>
     </footer>
-    
     <script src="../scripts/fslightbox.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

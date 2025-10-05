@@ -143,16 +143,15 @@
     </div>
 
     <div class="main-content">
-      <section id="results">
+      <section id="results" style="padding-top: 28px;">
         <figure>
-          <h2>🏆 Live resultaten</h2>
-          <label for="year-select">Resultaten weergeven van editie:</label>
-          <select id="year-select">
-            <option value="2024">2024</option>
-            <option value="2023">2023</option>
-          </select>
-          <br>
-          <br>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <h2 style="margin: 0;">🏆 Live resultaten</h2>
+            <select id="year-select" style="margin: 0;">
+              <option value="2024">2024</option>
+              <option value="2023">2023</option>
+            </select>
+          </div>
       
           <span style="z-index: 0;">
             <span>
@@ -222,6 +221,474 @@
                   margin-right: 0;
                   z-index: 0;
                   display: block; /* Ensure the div is always visible */
+                }
+
+                /* Custom styling for RaceResult tables */
+                #divRRPublish .MainTable {
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                  background-color: #f0f0f0 !important;
+                  border-collapse: collapse;
+                  width: 100%;
+                }
+
+                #divRRPublish .MainTable th {
+                  background-color: #4e0c69 !important;
+                  color: #f0f0f0 !important;
+                  font-family: 'mullerbold', sans-serif !important;
+                  padding: 12px 8px !important;
+                  text-align: left !important;
+                  border-bottom: 2px solid #060606 !important;
+                }
+                
+                #divRRPublish .MainTable thead tr {
+                  border-left: 4px solid #4e0c69 !important;
+                }
+
+                #divRRPublish .MainTable td {
+                  padding: 8px !important;
+                  border-bottom: 1px solid #e0e0e0 !important;
+                  color: #060606 !important;
+                }
+                
+                /* Hide content in comments and favorites columns but keep structure */
+                #divRRPublish .MainTable td[title*="favorite"],
+                #divRRPublish .MainTable td[title*="Favorite"],
+                #divRRPublish .MainTable td[title*="Mark/unmark"] {
+                  color: transparent !important;
+                  font-size: 0 !important;
+                  background-color: transparent !important;
+                }
+                
+                /* Ensure nbsp and any content is invisible */
+                #divRRPublish .MainTable td[title*="Mark/unmark"],
+                #divRRPublish .MainTable td[title*="favorite"] {
+                  visibility: hidden !important;
+                }
+                
+                /* But keep the cell structure */
+                #divRRPublish .MainTable td[title*="Mark/unmark"]::after,
+                #divRRPublish .MainTable td[title*="favorite"]::after {
+                  content: "" !important;
+                  visibility: visible !important;
+                  display: block !important;
+                  width: 100% !important;
+                  height: 100% !important;
+                }
+                
+                #divRRPublish .MainTable td[title*="favorite"] img,
+                #divRRPublish .MainTable td[title*="Favorite"] img,
+                #divRRPublish .MainTable td[title*="Mark/unmark"] img {
+                  display: none !important;
+                }
+                
+                /* Hide comment indicators but keep column structure */
+                #divRRPublish .MainTable td.Comments0::before,
+                #divRRPublish .MainTable td.Comments1::before,
+                #divRRPublish .MainTable td.Comments2::before,
+                #divRRPublish .MainTable td.Comments3::before,
+                #divRRPublish .MainTable td.Comments4::before,
+                #divRRPublish .MainTable td.Comments5::before {
+                  display: none !important;
+                }
+                
+                #divRRPublish .MainTable td.Comments0,
+                #divRRPublish .MainTable td.Comments1,
+                #divRRPublish .MainTable td.Comments2,
+                #divRRPublish .MainTable td.Comments3,
+                #divRRPublish .MainTable td.Comments4,
+                #divRRPublish .MainTable td.Comments5 {
+                  background: transparent !important;
+                  color: transparent !important;
+                  font-size: 0 !important;
+                }
+                
+                /* Hide favorites button in controls */
+                #divRRPublish .btnFavorites {
+                  display: none !important;
+                }
+
+                #divRRPublish .MainTable tbody tr:hover {
+                  background-color: transparent !important;
+                }
+                
+                #divRRPublish .MainTable tbody tr:hover td {
+                  font-weight: bold !important;
+                  color: #4e0c69 !important;
+                }
+
+                /* Style the group headers */
+                #divRRPublish .listGrouping {
+                  background-color: #eeddf4 !important;
+                  color: #4e0c69 !important;
+                  font-family: 'intro_rustbase', sans-serif !important;
+                  font-size: 1.1em !important;
+                  padding: 10px !important;
+                  text-transform: uppercase;
+                  border-left: 4px solid #4e0c69 !important;
+                }
+                
+                #divRRPublish td.listGrouping {
+                  color: #4e0c69 !important;
+                }
+
+                /* Big bold dark purple select box */
+                #year-select {
+                  font-family: 'made_evolve_sansbold', sans-serif;
+                  padding: 10px 30px 10px 12px;
+                  border: 3px solid #4e0c69;
+                  border-radius: 0;
+                  background-color: #4e0c69;
+                  color: #ffffff;
+                  cursor: pointer;
+                  margin: 0;
+                  font-size: 18px;
+                  font-weight: bold;
+                  width: auto;
+                  max-width: 120px;
+                  display: inline-block;
+                  -webkit-appearance: none;
+                  -moz-appearance: none;
+                  appearance: none;
+                  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3e%3cpolyline points="6 9 12 15 18 9"%3e%3c/polyline%3e%3c/svg%3e');
+                  background-repeat: no-repeat;
+                  background-position: right 12px center;
+                  background-size: 16px;
+                }
+
+                #year-select:hover {
+                  background-color: #060606;
+                  border-color: #060606;
+                }
+                
+                #year-select:focus {
+                  outline: none;
+                  background-color: #060606;
+                  border-color: #060606;
+                }
+
+                /* Minimal search/filter controls */
+                #divRRPublish .ListControl {
+                  background: transparent !important;
+                  padding: 5px 0 !important;
+                  margin: 10px 0 !important;
+                  border: none !important;
+                }
+
+                #divRRPublish .ListControlSearch {
+                  background: transparent !important;
+                  padding: 15px 0 !important;
+                  border: none !important;
+                  display: block !important;
+                  width: 100% !important;
+                  margin-top: 10px !important;
+                  clear: both !important;
+                  text-align: left !important;
+                }
+
+                #divRRPublish .ListControlSearch input {
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                  padding: 12px 16px !important;
+                  border: 2px solid #4e0c69 !important;
+                  border-radius: 0 !important;
+                  background: #f0f0f0 !important;
+                  font-size: 16px !important;
+                  color: #060606 !important;
+                  width: 300px !important;
+                  max-width: 100% !important;
+                  box-sizing: border-box !important;
+                  transition: all 0.2s ease !important;
+                  height: 46px !important;
+                  vertical-align: middle !important;
+                }
+
+                #divRRPublish .ListControlSearch input::placeholder {
+                  color: #999 !important;
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                }
+
+                #divRRPublish .ListControlSearch input:focus {
+                  outline: none !important;
+                  border-color: #4e0c69 !important;
+                  background: #f0f0f0 !important;
+                }
+
+                /* Search button with magnifying glass */
+                #divRRPublish .ListControlSearch button.btnSearch {
+                  background: #4e0c69 !important;
+                  background-color: #4e0c69 !important;
+                  color: white !important;
+                  border: 2px solid #4e0c69 !important;
+                  border-width: 2px !important;
+                  padding: 0 !important;
+                  border-radius: 0 !important;
+                  cursor: pointer;
+                  margin-left: -2px !important;
+                  transition: all 0.2s ease !important;
+                  width: 46px !important;
+                  height: 46px !important;
+                  box-sizing: border-box !important;
+                  position: relative !important;
+                  display: inline-flex !important;
+                  align-items: center !important;
+                  justify-content: center !important;
+                  font-size: 0 !important;
+                  overflow: hidden !important;
+                  text-indent: -9999px !important;
+                  vertical-align: middle !important;
+                }
+                
+                /* Add magnifying glass icon - white for enabled state (non-hover) */
+                #divRRPublish .ListControlSearch button.btnSearch:not(:disabled):not(:hover)::after {
+                  content: "" !important;
+                  display: block !important;
+                  width: 20px !important;
+                  height: 20px !important;
+                  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"%3e%3ccircle cx="11" cy="11" r="8"%3e%3c/circle%3e%3cpath d="m21 21-4.35-4.35"%3e%3c/path%3e%3c/svg%3e') !important;
+                  background-repeat: no-repeat !important;
+                  background-position: center !important;
+                  background-size: 20px 20px !important;
+                  position: absolute !important;
+                  left: 50% !important;
+                  top: 50% !important;
+                  transform: translate(-50%, -50%) !important;
+                  text-indent: 0 !important;
+                }
+                
+                /* Add magnifying glass icon - purple for disabled and hover state */
+                #divRRPublish .ListControlSearch button.btnSearch:disabled::after,
+                #divRRPublish .ListControlSearch button.btnSearch:hover::after {
+                  content: "" !important;
+                  display: block !important;
+                  width: 20px !important;
+                  height: 20px !important;
+                  background-image: url('data:image/svg+xml;charset=UTF-8,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%234e0c69" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"%3e%3ccircle cx="11" cy="11" r="8"%3e%3c/circle%3e%3cpath d="m21 21-4.35-4.35"%3e%3c/path%3e%3c/svg%3e') !important;
+                  background-repeat: no-repeat !important;
+                  background-position: center !important;
+                  background-size: 20px 20px !important;
+                  position: absolute !important;
+                  left: 50% !important;
+                  top: 50% !important;
+                  transform: translate(-50%, -50%) !important;
+                  text-indent: 0 !important;
+                }
+
+                /* Search button enabled state - purple background */
+                #divRRPublish .ListControlSearch button.btnSearch:enabled,
+                #divRRPublish .ListControlSearch button.btnSearch:not(:disabled) {
+                  background-color: #4e0c69 !important;
+                  background: #4e0c69 !important;
+                  border: 2px solid #4e0c69 !important;
+                }
+                
+                #divRRPublish .ListControlSearch button.btnSearch:hover:not(:disabled) {
+                  background: #f0f0f0 !important;
+                  background-color: #f0f0f0 !important;
+                  border-color: #4e0c69 !important;
+                  border: 2px solid #4e0c69 !important;
+                }
+
+                /* Search button disabled state - light gray background */
+                #divRRPublish .ListControlSearch button.btnSearch:disabled {
+                  background-color: #f0f0f0 !important;
+                  background: #f0f0f0 !important;
+                  border: 2px solid #4e0c69 !important;
+                  opacity: 1 !important;
+                  cursor: not-allowed !important;
+                }
+                
+                /* Style the clear (x) button */
+                #divRRPublish .ListControlSearch button.btnClearSearch {
+                  background: #f0f0f0 !important;
+                  color: #4e0c69 !important;
+                  border: 2px solid #4e0c69 !important;
+                  padding: 0 !important;
+                  margin-left: 8px !important;
+                  width: 46px !important;
+                  height: 46px !important;
+                  border-radius: 0 !important;
+                  cursor: pointer;
+                  position: relative !important;
+                  display: inline-flex !important;
+                  align-items: center !important;
+                  justify-content: center !important;
+                  transition: all 0.2s ease !important;
+                  vertical-align: middle !important;
+                }
+                
+                /* Hide the original X image and add custom one */
+                #divRRPublish .ListControlSearch button.btnClearSearch img {
+                  display: none !important;
+                }
+                
+                #divRRPublish .ListControlSearch button.btnClearSearch::after {
+                  content: "×" !important;
+                  font-size: 24px !important;
+                  color: #4e0c69 !important;
+                  font-weight: bold !important;
+                  line-height: 1 !important;
+                }
+                
+                #divRRPublish .ListControlSearch button.btnClearSearch:hover {
+                  background: #4e0c69 !important;
+                  border-color: #4e0c69 !important;
+                }
+                
+                #divRRPublish .ListControlSearch button.btnClearSearch:hover::after {
+                  color: #f0f0f0 !important;
+                }
+                
+                /* Hide favorites button */
+                #divRRPublish .ListControlSearch button.btnFavorites {
+                  display: none !important;
+                }
+
+                /* Hide back button */
+                #divRRPublish .ListBack {
+                  display: none !important;
+                }
+
+                /* Keep original medal colors - don't override */
+                /* Gold, silver, bronze medals will use RaceResult's default colors */
+
+                /* Style the "Show all" links */
+                #divRRPublish .aShowAll {
+                  color: #060606 !important;
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                  text-decoration: underline !important;
+                  cursor: pointer;
+                  font-weight: normal !important;
+                  background: transparent !important;
+                  border: none !important;
+                  padding: 0 !important;
+                }
+
+                #divRRPublish .aShowAll:hover {
+                  text-decoration: none !important;
+                  color: #060606 !important;
+                  background: transparent !important;
+                }
+
+                /* Style loading indicator */
+                #divRRPublish .Loading {
+                  color: #4e0c69 !important;
+                  font-family: 'mullerbold', sans-serif !important;
+                  padding: 20px !important;
+                  text-align: center !important;
+                }
+
+                /* Minimal PDF button */
+                #divRRPublish .ListControlPDF {
+                  display: inline-block !important;
+                  background: transparent !important;
+                  color: #060606 !important;
+                  padding: 4px 0 !important;
+                  border: none !important;
+                  border-radius: 0 !important;
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                  cursor: pointer;
+                  margin-right: 8px !important;
+                  font-size: 14px !important;
+                  text-decoration: underline !important;
+                  white-space: nowrap !important;
+                }
+
+                #divRRPublish .ListControlPDF:hover {
+                  background: transparent !important;
+                  color: #060606 !important;
+                  text-decoration: none !important;
+                }
+                
+                /* Hide PDF icon */
+                #divRRPublish .ListControlPDF::before {
+                  display: none !important;
+                }
+
+                /* Clean up the header/footer text */
+                #divRRPublish .ListHeaderFooter {
+                  font-family: 'made_evolve_sanslight', sans-serif !important;
+                  color: #060606 !important;
+                  padding: 10px !important;
+                  font-size: 0.9em !important;
+                  border-left: 3px solid #4e0c69 !important;
+                  background-color: #f8f8f8 !important;
+                  margin: 10px 0 !important;
+                  margin-left: 0 !important;
+                  margin-right: 0 !important;
+                  width: 100% !important;
+                  max-width: 100% !important;
+                  box-sizing: border-box !important;
+                  display: block !important;
+                }
+
+                /* Style selector/filter menu */
+                #divRRPublish .Selector {
+                  background-color: #f0f0f0 !important;
+                  border: 2px solid #4e0c69 !important;
+                  border-radius: 4px !important;
+                  padding: 5px !important;
+                }
+
+                /* Hide RaceResult and Running Results logos */
+                #divRRPublish > div[style*="position: static"] {
+                  display: none !important;
+                  visibility: hidden !important;
+                  height: 0 !important;
+                  overflow: hidden !important;
+                }
+                
+                #divRRPublish img[src*="Running%20Results"],
+                #divRRPublish img[src*="RunningResults"],
+                #divRRPublish img[src*="running%20results"],
+                #divRRPublish img[src*="RRPublish/picture"],
+                #divRRPublish div[style*="RR_PoweredBy"],
+                #divRRPublish div[style*="background-image"][style*="RRPublish"] {
+                  display: none !important;
+                  visibility: hidden !important;
+                }
+                
+                /* More aggressive hiding of bottom logos */
+                #divRRPublish > div:last-child {
+                  display: none !important;
+                }
+                
+                #divRRPublish div[style*="margin-top: 10px"][style*="padding: 2px"] {
+                  display: none !important;
+                }
+
+                /* Responsive adjustments */
+                @media screen and (max-width: 768px) {
+                  #divRRPublish .MainTable {
+                    font-size: 0.9em;
+                  }
+                  
+                  #divRRPublish .MainTable th,
+                  #divRRPublish .MainTable td {
+                    padding: 4px !important;
+                  }
+                  
+                  #divRRPublish .ListControlSearch {
+                    flex-direction: row !important;
+                    align-items: center !important;
+                    flex-wrap: wrap !important;
+                  }
+                  
+                  #divRRPublish .ListControlSearch input {
+                    max-width: 100% !important;
+                    margin-bottom: 0 !important;
+                    vertical-align: middle !important;
+                  }
+                  
+                  #divRRPublish .ListControlSearch button {
+                    width: auto !important;
+                    display: inline-block !important;
+                    margin-right: 5px !important;
+                    margin-bottom: 0 !important;
+                    vertical-align: middle !important;
+                  }
+                  
+                  #divRRPublish .ListControl {
+                    padding: 5px !important;
+                  }
                 }
               </style>
             </span>
