@@ -976,9 +976,27 @@ flex-wrap: wrap;
     padding-bottom: 6em;
 }
 
-/* CSS custom property for safe area */
+/* CSS custom properties for safe area and footer */
 :root {
     --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --footer-height: 80px; /* Approximate footer height */
+}
+
+html, body {
+    height: 100%;
+}
+
+/* Main content wrapper to prevent content hiding behind footer */
+.main-content {
+    min-height: 100svh; /* Stable viewport height on load */
+    padding-bottom: calc(var(--footer-height) + var(--safe-bottom));
+}
+
+/* Dynamic viewport support for smooth URL bar transitions */
+@supports (height: 100dvh) {
+    .main-content {
+        min-height: 100dvh; /* Dynamic viewport that follows URL bar */
+    }
 }
 
 footer {
@@ -987,14 +1005,18 @@ footer {
     left: 0;
     right: 0;
     width: 100%;
+    height: var(--footer-height);
     z-index: 1000;
     background-color: #4e0c69;
+    /* Safe area padding for home indicator */
+    padding-bottom: env(safe-area-inset-bottom, 0);
     /* Hardware acceleration */
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
     will-change: transform;
-    /* Safe area padding */
-    padding-bottom: var(--safe-bottom);
+    /* Backdrop blur for modern iOS look */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 footer .sponsors-footer {
@@ -1146,7 +1168,7 @@ footer .sponsors-footer img {
     }
 }
 
-/* Mobile: footer always visible */
+/* Mobile: footer always visible with proper iOS handling */
 @media screen and (max-width: 767px) {
     footer {
         display: block;
@@ -1156,6 +1178,13 @@ footer .sponsors-footer img {
         right: 0;
         width: 100%;
         z-index: 1000;
+        /* Ensure footer stays above home indicator */
+        padding-bottom: env(safe-area-inset-bottom, 10px);
+    }
+    
+    /* Adjust main content to not hide behind footer */
+    .main-content {
+        padding-bottom: calc(var(--footer-height) + env(safe-area-inset-bottom, 10px) + 20px);
     }
 }
 
